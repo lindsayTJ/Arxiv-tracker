@@ -1,0 +1,900 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-24 05:47</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261024_0547</div>
+    <div class="row"><div class="card">
+<div class="title">Causal inference in staggered adoption panels: The correct comparison set depends on your intervention</div>
+<div class="meta-line">Authors: Ian Lundberg, Yaling Xu</div>
+<div class="meta-line">First: 2026-10-22T16:46:04+00:00 · Latest: 2026-10-22T16:46:04+00:00</div>
+<div class="meta-line">Comments: 36 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31537v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31537v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A powerful data structure for causal inference is staggered adoption: many units are observed over many time periods, during which some units adopt an irreversible treatment at various time points while others remain untreated. Popular methods that apply in this setting include difference in difference, fixed effects, matching, and synthetic control. All of these methods compare the future outcomes of treatment adopters and non-adopters to answer the question: for units who adopt treatment, what outcomes would have been realized if they had remained untreated? We show that this question actually hides two very different causal questions of interest. The first is what would have happened under a momentary intervention to prevent treatment at its factual adoption time. The second is what would have happened to a treated unit under a longitudinal ban preventing treatment at all periods until outcome measurement. We show how to answer each question under conditionally ignorable treatment adoption or under parallel trends. We highlight that common methods cannot answer the second question because this question requires a time-varying comparison set with time-varying weights.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A powerful data structure for causal inference is staggered adoption: many units are observed over many time periods, during which some units adopt an irreversible treatment at various time points while others remain untreated.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Detecting adverse high-order drug combinations from individual case safety reports using computational statistics on disproportionality measures</div>
+<div class="meta-line">Authors: Jules Bangard, Einar Holsbø, Kristian Svendsen, Vittorio Perduca, Etienne Birmel{é}</div>
+<div class="meta-line">Venue: Computo, 2026</div>
+<div class="meta-line">First: 2025-04-01T10:56:59+00:00 · Latest: 2026-10-22T16:38:40+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2504.00646v2">Abs</a> · <a href="https://arxiv.org/pdf/2504.00646v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Adverse drug reactions linked to the intake of drug combinations are a critical concern in pharmacovigilance, particularly as the controlled environment of clinical trials often lacks the scale and diversity to detect rare events involving multiple medications. While spontaneous reporting systems provide the necessary breadth for post-market surveillance, identifying overrepresented drug cocktails within such large-scale data remains a significant computational challenge. This study introduces a computational framework for the detection of drug cocktails associated with adverse events, leveraging disproportionality analysis on individual case safety reports. By integrating the Anatomical Therapeutic Chemical classification, the framework extends beyond individual drugs to capture hierarchical pharmacological relationships, enabling exploration of the space of drug combinations beyond pairwise analysis. To address biases inherent in existing disproportionality measures, we employ a hypergeometric risk metric, while a Markov Chain Monte Carlo algorithm provides robust empirical p-value estimation for the risk associated with cocktails. A genetic algorithm further facilitates efficient identification of high-risk drug cocktails. A post-treatment step based on penalized logistic regression allows distinguishing true pharmacological interactions from combined individual effects for cocktails of any size. Validation on synthetic and FDA Adverse Event Reporting System data demonstrates the method&#x27;s efficacy in detecting established drugs and drug combinations associated with myopathy-related adverse events. Implemented as an R package, this framework offers a reproducible, scalable tool for post-market drug safety surveillance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Adverse drug reactions linked to the intake of drug combinations are a critical concern in pharmacovigilance, particularly as the controlled environment of clinical trials often lacks the scale and diversity to detect rare events involving multiple medications.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Diagnostic for Bias in Linear Mixed Model Estimators Induced by Dependence Between the Random Effects and the Corresponding Model Matrix</div>
+<div class="meta-line">Authors: Andrew T. Karl, Dale L. Zimmerman</div>
+<div class="meta-line">Venue: Journal of Statistical Planning and Inference, 211, March 2021, Pages 107-118</div>
+<div class="meta-line">First: 2020-03-18T08:25:02+00:00 · Latest: 2026-10-22T15:47:58+00:00</div>
+<div class="meta-line">Comments: Corrected the bias decomposition and variance assumptions, clarified diagnostic interpretation, added conditional simulation checks, and corrected minor notation, wording and punctuation</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2003.08087v3">Abs</a> · <a href="https://arxiv.org/pdf/2003.08087v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We explore how violations of the often-overlooked standard assumption that the random effects model matrix in a linear mixed model is fixed (and thus independent of the random effects vector) can lead to bias in estimators of estimable functions of the fixed effects. However, if the random effects of the original mixed model are instead also treated as fixed effects, or if the fixed and random effects model matrices are orthogonal with respect to the inverse of the error covariance matrix (with probability one), or if the random effects and the corresponding model matrix are independent, then these estimators are unbiased. The bias in the general case is quantified, and a diagnostic for its random-effects contribution is compared to a randomized permutation distribution of the predicted random effects, producing an informative summary graphic for each estimator of interest. This is demonstrated through the examination of sporting outcomes used to estimate a home field advantage.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We explore how violations of the often-overlooked standard assumption that the random effects model matrix in a linear mixed model is fixed (and thus independent of the random effects vector) can lead to bias in estimators of estimable functions of the fixed effects.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Modelling wide-swath altimeter observation-error correlations with a regularised diffusion operator</div>
+<div class="meta-line">Authors: Olivier Goux, Anthony Weaver, Andrea Piacentini</div>
+<div class="meta-line">First: 2026-10-22T15:10:25+00:00 · Latest: 2026-10-22T15:10:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31409v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31409v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Unaccounted-for observation-error correlations have long been known to be detrimental to the quality of atmospheric and ocean analyses produced by data assimilation (DA) systems. While progress has been made over the past decade on modelling inter-channel error correlations, modelling spatial error correlations remains a challenge for large datasets. Common strategies for mitigating the harmful effects of spatial error correlations, such as variance inflation or data thinning, prevent the extraction of valuable small-scale information from the observations. With the emergence of new sources of high-resolution observations, such as those from the Surface Water and Ocean Topography (SWOT) wide-swath altimeter, the need to address this limitation of DA systems has become increasingly pressing. To do so, we consider a diffusion-based observation-error correlation operator, extending previous work on modelling correlated errors in conventional nadir altimeter data. When observation-error correlation length scales are large, the original method can suffer from an excessive sensitivity of the inverse correlation operator to small-scale perturbations. Since actual estimates of observation-error correlations from SWOT suggest the presence of large length scales, a more robust formulation of the method is required. We present a regularised formulation of the diffusion-based correlation operator that eliminates this excessive sensitivity while preserving computational efficiency. We describe the implementation of the operator for a mesh constructed from SWOT observation locations and demonstrate its application in a global ocean DA system. To validate the new formulation, we perform DA experiments with simulated SWOT observations. These experiments confirm that the regularised correlation operator provides an effective, robust and practical approach for representing wide-swath altimeter observation-error correlations in operational ocean DA systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Unaccounted-for observation-error correlations have long been known to be detrimental to the quality of atmospheric and ocean analyses produced by data assimilation (DA) systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Anatomy of Dependence in Multivariate Ordered Choice</div>
+<div class="meta-line">Authors: Tatiana Komarova, William Matcham</div>
+<div class="meta-line">First: 2022-05-11T21:29:53+00:00 · Latest: 2026-10-22T14:43:52+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2205.05779v5">Abs</a> · <a href="https://arxiv.org/pdf/2205.05779v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When individuals make simultaneous decisions across multiple ordered dimensions, standard multivariate ordered choice models impose narrow bracketing, with each dimension decided as if the others did not exist. We develop a general rectangular structure model capturing broad bracketing while nesting the standard model. The framework introduces two layers of dependence, one through the threshold structure associated with decision rules and the other through the correlation of latent utilities. We provide microfoundations, prove identification, and discuss estimation. We showcase the model in applications to parental investment in children&#x27;s education, cryptocurrency familiarity and expectations, and health insurance, where the latter separates moral hazard from adverse selection.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When individuals make simultaneous decisions across multiple ordered dimensions, standard multivariate ordered choice models impose narrow bracketing, with each dimension decided as if the others did not exist.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Physically-Motivated Stochastic Model of Tropical Cyclone Dynamic Wind Fields</div>
+<div class="meta-line">Authors: Matthew LeDuc, William Kleiber</div>
+<div class="meta-line">First: 2026-10-22T14:30:46+00:00 · Latest: 2026-10-22T14:30:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31349v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31349v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Tropical cyclones (TCs) pose significant risk to infrastructure and human safety, and the frequency and intensity of large TCs are expected to increase in the future. Quantifying such risk to coastal and inland regions is challenging, largely due to the rare nature of TCs which limits historical data availability. We introduce a new stochastic model of TC wind fields conditional on a small number of physical variables commonly found in synthetic and observed storm track databases. The model consists of a physically-motivated mean trend and an expansion of the residual field into a wavelet frame. We demonstrate the approach on a dataset consisting of historical data for storms impacting the northwest Gulf of Mexico. The model adequately captures asymmetry and nonstationary space-time correlation structures of observed wind fields.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Tropical cyclones (TCs) pose significant risk to infrastructure and human safety, and the frequency and intensity of large TCs are expected to increase in the future.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Evaluating Neural Probabilistic Forecasts of Sparse Earthquake Counts: What Survives a Careful Evaluation</div>
+<div class="meta-line">Authors: Alim Igilik</div>
+<div class="meta-line">First: 2026-05-20T17:27:27+00:00 · Latest: 2026-10-22T13:53:06+00:00</div>
+<div class="meta-line">Comments: 30 pages, 1 figure, 3 tables. Substantially revised: the main claims of v1 (8.6% lower deviance than the NB GLM, 12.5% lower tail CRPS, the per-cell dispersion map) are withdrawn; corrections are listed in Section 7. New: an exact test of the busy-week tail and a blind test on 2024-2026. Code and data: https://github.com/Al1mkaYandere/seismic-probabilistic-modeling</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.21437v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.21437v2">PDF</a> · <a href="https://github.com/Al1mkaYandere/seismic-probabilistic-modeling">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We revisit a neural negative binomial model for weekly earthquake counts on a 3 x 3 degree grid over the Tian Shan and Pamir, and ask which of its conclusions survive a careful evaluation. At the completeness magnitude of 4.5, the 144-week test period holds 2448 cell-weeks; six cell-weeks, in five distinct weeks, have three or more events.
+  Two conclusions survive. First, Poisson forecasts, temporal ETAS included, understate the probability of such a busy week: ETAS expects 0.72 where six occurred, a shortfall by a factor of 8.3 (p = 0.00009, exact test). One dispersion parameter removes it (ETAS with dispersion expects 4.45, p = 0.58); simulating aftershock chains within the week also reproduces the tail but overshoots the total count by about a quarter. Second, the network&#x27;s advantage over a linear model disappears once that model has an intercept per cell: the remaining gain is 3.4% of deviance, not significant (p = 0.57 over five test years), and it comes from one cell-week out of the 4420 scored; without it the network is 0.7% worse.
+  A blind test on 2024 to September 2026, with every model fitted on data through 2023, confirms the tail result: Poisson forecasts are rejected (p from 3 x 10^-8 to 0.001), dispersion models are not (p between 0.25 and 0.84), except the NB GLM, whose level blew up out of sample and which is rejected at p = 0.003. Out of sample, model families differ in how they extrapolate beyond the training range, not in the per-cell term.
+  We also measure the evaluation traps met on the way: a biased reference level, a single seed (five of six effects in v1&#x27;s results table change sign), too few bootstrap resamples, and a threshold below completeness, which shrinks the ETAS shortfall from 8.3 to 2.8 times. This version replaces preprint v1; Section 7 lists the corrections.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We revisit a neural negative binomial model for weekly earthquake counts on a 3 x 3 degree grid over the Tian Shan and Pamir, and ask which of its conclusions survive a careful evaluation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimal Search Strategies under Finite Resource Constraints: The Role of Environmental Memory and Directional Information in Informed and Blind Protocols</div>
+<div class="meta-line">Authors: Hugues Meyer</div>
+<div class="meta-line">First: 2026-10-22T13:25:39+00:00 · Latest: 2026-10-22T13:25:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31244v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31244v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Improving the efficiency of a stochastic search often requires to provide the searching agent with resources that modify its dynamics and help it explore space more quickly. Although such resources are often assumed to be unlimited and treated as a cost to mitigate, many realistic search processes operate under a finite resource budget, e.g. in processes with environmental memory in which the searcher deposits long-lasting cues along its path that it can interact with at later times to guide its further search. Here, we address the question of how to allocate a limited budget to maximize search efficiency by investigating a one-dimensional diffusing agent whose access to resources is constrained. We consider three resource models, namely an external force applied by an external controller to pull the searcher towards the target, directional flags deposited by the searcher along its path that redirect its motion towards the target, and self-generated chemorepulsive cues that act as a force field. For all these models, we find that resource usage should be concentrated in narrow regions of space when information about the searcher&#x27;s current and past positions is available. In contrast, in blind strategies where a predefined time protocol is followed, resources should be used at a steady rate to ensure it to be used at most of its capacity by the time it reaches the target. We further show that blind strategies in non-Markovian processes with environmental memory are significantly less efficient due to the inherent fluctuations in the locations of deposited cues.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Improving the efficiency of a stochastic search often requires to provide the searching agent with resources that modify its dynamics and help it explore space more quickly.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Can We Trust Evaluations of AI Weather Forecasts for Extremes? How Evaluation Protocols Shape Model Rankings</div>
+<div class="meta-line">Authors: Tobias Biegert, Sam Allen, Zhongwei Zhang, Sebastian Lerch</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-22T13:19:16+00:00 · Latest: 2026-10-22T13:19:16+00:00</div>
+<div class="meta-line">Comments: Accepted paper at NeurIPS 2026 Workshop: TAE (Trust-AI-Eval): Can We Trust AI Evaluation?</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31237v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31237v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">AI weather models perform competitively with traditional physics-based models at a fraction of the computational cost, and they are thus already used operationally. However, studies reach conflicting conclusions about their ability to forecast extreme weather events, and comparisons across studies are complicated by differing evaluation protocols. We discuss the challenges that arise when comparing AI and physics-based weather forecasts for extreme events. Within a common experimental design, we find that model rankings are highly sensitive to the choice of evaluation metrics: the considered physics-based model tends to perform best when evaluation is restricted to observed extreme events, whereas AI models generally perform better when evaluated using weighted scoring functions. A contingency table analysis shows that AI models underpredict the frequency of extremes, so that their scores are generally dominated by misses, while the physics-based model forecasts extremes more frequently and its scores are dominated by false alarms. Different evaluation metrics penalise these errors differently. Further score decompositions confirm that the score differences arise primarily from miscalibration rather than discrimination ability. This sheds light on the contrasting results in the literature, and highlights the importance of the evaluation metrics used to evaluate AI models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">AI weather models perform competitively with traditional physics-based models at a fraction of the computational cost, and they are thus already used operationally.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Cleaner air strengthens the Pacific trade winds without a detectable change in El Nino</div>
+<div class="meta-line">Authors: Ioana Colfescu, Alice Pigelet, Chen Lu, Massimo A. Bollasina, Silvio Gualdi</div>
+<div class="meta-line">First: 2026-10-22T13:16:04+00:00 · Latest: 2026-10-22T13:16:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31236v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31236v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Air quality policy will cut aerosol and ozone precursor emissions, and studies disagree on how the tropical Pacific circulation and the El Nino Southern Oscillation (ENSO) will respond. Here we show, in 12 Earth system models with and without air quality controls, that the cuts strengthen the Pacific trade winds and offset half to two thirds of the weakening projected without them. The response is absent with prescribed sea surface temperatures and detectable only after 2040. It is consistent with the Indian Ocean warming relative to the Pacific, which also ranks the responses to cuts made region by region. ENSO amplitude changes by less than a tenth of its value, the smallest change this ensemble could detect. The change implied by the mean state shift is a sixth of that, and an ENSO model trained without the reduced emission runs predicts none. El Nino&#x27;s regional impacts still change, because the background climate does.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Air quality policy will cut aerosol and ozone precursor emissions, and studies disagree on how the tropical Pacific circulation and the El Nino Southern Oscillation (ENSO) will respond.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Order-Disorder in Fe-Si Alloys: Implications for Seismic and Transport Properties of Earth&#x27;s Inner Core</div>
+<div class="meta-line">Authors: Cong Liu, Xin Deng, R. E. Cohen</div>
+<div class="meta-line">First: 2025-11-28T06:07:24+00:00 · Latest: 2026-10-22T13:15:49+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.22899v2">Abs</a> · <a href="https://arxiv.org/pdf/2511.22899v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Understanding the structure and dynamics of Earth&#x27;s inner core is essential for constraining its composition, thermal evolution, and seismic behavior. Silicon is widely considered a major light element in the core. Here, we use first-principles molecular dynamics and thermodynamic modeling to investigate the structural, elastic, and transport properties of iron-silicon (Fe-Si) alloys under inner-core conditions. By computing the Gibbs free energies of multiple solid phases, including ordered B2, hexagonal close-packed (hcp), face-centered cubic (fcc), and body-centered cubic (bcc) Fe-Si, we construct a phase diagram relevant to inner-core pressures and temperatures. We identify a pronounced miscibility gap between hcp and cubic Fe--Si phases, with phase coexistence over approximately 6--11 wt\% Si at 6000 K. The cubic phase exhibits a strong order-dependent elastic response, with disordered bcc showing a large intrinsic shear anisotropy (22.9\% at 6000 K), in contrast to the nearly isotropic hcp phase (0.6\%). Meanwhile, disordered bcc Fe--Si produces shear wave velocities ($V_S=3.73$ km$\cdot$s$^{-1}$) and Poisson&#x27;s ratios comparable with seismological constraints. In addition, disordered bcc Fe--Si exhibits a lower thermal conductivity than hcp Fe--Si, providing a quantitative constraint on phase-dependent electronic heat transport. These results demonstrate that chemical ordering strongly controls the stability and physical properties of cubic Fe--Si alloys, and suggest that metastable or localized cubic Fe--Si phases may contribute to the structural and transport complexity of Earth&#x27;s inner core.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Understanding the structure and dynamics of Earth&#x27;s inner core is essential for constraining its composition, thermal evolution, and seismic behavior.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Track finding and particle identification performance with particle physics foundation models</div>
+<div class="meta-line">Authors: Shuhang Li, Haiwang Yu, Gabor Galgoczi, Yeonju Go, Yi Huang, David Park, Michael Peters, Christof Roland, Jin Huang, Yihui Ren, Joseph D. Osborn</div>
+<div class="meta-line">First: 2026-10-22T12:32:26+00:00 · Latest: 2026-10-22T12:32:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31180v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31180v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern high energy nuclear and particle physics experiments produce large amounts of sparse data that must be reduced significantly in size before performing physics analysis. Recently, there has been an effort to evaluate Foundation Models as a potential tool for performing data analysis. These models have been shown to learn features in high dimensional datasets based on the multi-modal data they are trained on. To show their effectiveness at performing complex pattern recognition tasks, such as reconstructing charged particles in a magnetic field, we evaluated the performance of a Foundation Model based reconstruction on several downstream tasks with a dataset composed of spacepoints in a Time Projection Chamber. We show that the performance of the Foundation Model based data analysis significantly improves upon that of traditional methods, and furthermore can be adapted to learn additional tasks that are not necessarily related to the initial training objective.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern high energy nuclear and particle physics experiments produce large amounts of sparse data that must be reduced significantly in size before performing physics analysis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Prediction Uncertainty Controlled Computer Model Calibration</div>
+<div class="meta-line">Authors: Ryan Heejoon Byun, Dayeon Yoon, Won Chang</div>
+<div class="meta-line">First: 2026-10-22T12:22:01+00:00 · Latest: 2026-10-22T12:22:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31163v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31163v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Computer-model calibration is usually undertaken in service of prediction, yet neither Bayesian Kennedy-O&#x27;Hagan (KOH) calibration nor amortized simulation-based inference is built to control the predictive error of the calibrated simulator. When parameters are weakly identified or the data-model discrepancy is misspecified, the simulator-output bands induced by a nominal posterior level can be far from nominal. We propose a two-layer framework that targets predictive miscoverage directly. First, a conditional flow-matching model learns an amortized posterior for the calibration parameters, trained on simulator outputs perturbed with Gaussian-process discrepancies of varying structure. Second, conformal risk control arranges posterior draws for the target observation into nested candidate sets and selects the smallest one whose fixed-rank pointwise bands attain a prescribed time-averaged miscoverage on a synthetic calibration sample. Under exchangeability of calibration and target observations, the bands control expected miscoverage in finite samples. In a synthetic benchmark, the proposed bands are roughly 20% the width of KOH-MCMC bands with miscoverage near the 10% target. In calibrating an age-structured SEIR model to the 2010 Malawi measles outbreak, they are again sharper and near-nominal, and the weeks they fail to cover coincide with the asymmetric epidemic decline, exposing structural inadequacy of the mechanistic model.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Computer-model calibration is usually undertaken in service of prediction, yet neither Bayesian Kennedy-O&#x27;Hagan (KOH) calibration nor amortized simulation-based inference is built to control the predictive error of the calibrated simulator.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GeoAgent: Contract-Constrained LLM Agents for Seismic Data Processing</div>
+<div class="meta-line">Authors: Zhilong Fang, Qi Zhang, Jujie Yan, Zhong Wang, Xinbin Gu, Ziyang Zhang, Hua Wang</div>
+<div class="meta-line">First: 2026-10-22T11:07:12+00:00 · Latest: 2026-10-22T11:07:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31096v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31096v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models (LLMs) can drive scientific software through function calling, but free-form tool use is fragile on long, data-dependent processing chains. Models omit arguments, invent units, feed the previous artifact into the wrong input, and report completion without a verifiable product. We present GeoAgent, an agent system for seismic data processing built on Madagascar&#x27;s roughly 1{,}965 command-line programs. GeoAgent exposes 54 operator agents (51 generated from a declarative specification), retrieves from an index of 1{,}937 operators, and encodes the processing flow as a nine-stage state graph. Four explicit contracts---named artifacts, input resolution, parameter takeover, and artifact validation---move everything the graph can determine out of the model&#x27;s discretion. A deterministic geometry tool parses the self-describing SPS/RPS/XPS and SEG-Y headers, cross-checks eight consistency conditions, and reproduces the reference shell recipe exactly. The system runs in containers with session- and task-level isolation, bounded execution, and defenses against silent failures. On a 2-D land dataset, the nine-stage pipeline completes in about six to eleven minutes and yields a verified artifact at every stage, while retrieval reduces per-turn tool context from about 12k to 2k tokens. We report the design, deployment experience, and motivating failure modes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models (LLMs) can drive scientific software through function calling, but free-form tool use is fragile on long, data-dependent processing chains.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Conditional Mean Flows for Frequency-Domain Scattered Wavefield Generation</div>
+<div class="meta-line">Authors: Lipeng Lai, Shaohuan Zu</div>
+<div class="meta-line">First: 2026-10-22T10:49:29+00:00 · Latest: 2026-10-22T10:49:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31071v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31071v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Frequency-domain wavefield modeling underpins seismic imaging and inversion, where repeated Helmholtz solutions become costly as velocity models, source locations, and frequencies vary. Neural operators learn mappings between physical fields, and their accuracy can decline outside the training distribution. Diffusion models learn wavefield distributions and generally require repeated sampling evaluations to produce accurate fields. A conditional mean flows model is introduced for complex scattered-wavefield generation. The analytical background wavefield serves as a condition alongside the velocity model, supplying spatially organized information about the source location and frequency. Learning the scattered wavefield avoids the point-source singularity in the target and supports generalization across these physical conditions. The model estimates the average transport velocity over a finite interval connecting Gaussian noise to the scattered field. This representation captures the accumulated displacement and permits both full-interval one-step generation and interval-partitioned sampling. Trained on OpenFWI, the model is evaluated on in-distribution and out-of-distribution velocity structures, frequency generalization, and inference efficiency. In most evaluated settings, one-step mean flows sampling achieves lower wavefield error than multi-step diffusion. Because each sampling step requires another network evaluation, accurate one-step generation also reduces inference time. These results indicate that mean flows can provide accurate and efficient frequency-domain scattered-wavefield generation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Frequency-domain wavefield modeling underpins seismic imaging and inversion, where repeated Helmholtz solutions become costly as velocity models, source locations, and frequencies vary.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">State-resolved multimodal contributions to stratospheric polar vortex predictability</div>
+<div class="meta-line">Authors: Shuo Yang, Dan Zhao, Tingting Xue, Chunhua Zeng, Yongwen Zhang, Xiaosong Chen</div>
+<div class="meta-line">First: 2026-05-13T12:13:13+00:00 · Latest: 2026-10-22T09:34:52+00:00</div>
+<div class="meta-line">Comments: 20 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.13417v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.13417v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The dynamical basis of stratospheric polar vortex (SPV) predictability remains unclear, particularly the relative roles of persistence, structural variability, and cross-level coupling. Here we combine eigen microstate theory with mesoscopic Granger-causality analysis of ERA5 geopotential height fields to quantify the predictive contributions of eigen microstates. We show that short-term predictability is dominated by the persistence of the leading stratospheric state, whereas higher-order stratospheric structures and tropospheric variability provide additional predictive information at subseasonal leads. Including these additional states increases the all-winter 30-day prediction correlation from 0.24 to 0.33 and reduces forecast error. These contributions exhibit strong lead-time dependence and vary between winters with and without sudden stratospheric warmings. Part of this predictive information overlaps with that contained in preceding 100 hPa eddy heat flux, linking state-resolved predictability to wave-related circulation variability. Our results unify SPV predictability within a multimodal, state-resolved framework and provide a physically interpretable pathway.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The dynamical basis of stratospheric polar vortex (SPV) predictability remains unclear, particularly the relative roles of persistence, structural variability, and cross-level coupling.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OTProf: estimating high-resolution profiles of optical turbulence ($C_n^2$) from reanalysis using deep learning</div>
+<div class="meta-line">Authors: Maximilian Pierzyna, Sukanta Basu, Rudolf Saathof</div>
+<div class="meta-line">First: 2026-04-10T14:17:58+00:00 · Latest: 2026-10-22T09:34:08+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.09346v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.09346v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Accurate, high-resolution vertical profiles of optical turbulence ($C_n^2$), which reflect local meteorology and topography, are crucial for ground-based optical astronomy and free-space optical communication. However, measuring these profiles or generating them with numerical weather models requires substantial operational or computational effort. In this work, we present OTProf, a deep-learning method that estimates high-resolution $C_n^2$ profiles from widely available coarse-resolution ERA5 reanalysis data. OTProf is based on the Squeezeformer architecture, modified for super-resolution by introducing grid-agnostic interpolation in the latent space. We train and evaluate OTProf in the Netherlands using high-resolution $C_n^2$ data obtained from the Weather Research and Forecasting (WRF) model. The commonly used Hufnagel-Valley model serves as the baseline. Overall, OTProf reproduces the vertical structure of WRF-based $C_n^2$ more accurately than Hufnagel-Valley and yields more accurate estimates of the Fried parameter $r_0$ and the scintillation index $σ_I^2$. Out-of-domain performance is assessed using a smaller WRF-based $C_n^2$ dataset covering the Canary Islands. Initial results indicate a performance drop because the orography differs markedly from the training domain. We show that output bias correction based on a few local simulations can help OTProf to adapt, but more work for domain adaptation is needed. OTProf is therefore primarily recommended for in-domain applications, e.g., generating $C_n^2$ climatologies from long ERA5 records.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Accurate, high-resolution vertical profiles of optical turbulence ($C_n^2$), which reflect local meteorology and topography, are crucial for ground-based optical astronomy and free-space optical communication.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Zero-Shot Forecasting of In-Situ Soil Moisture and Temperature with a Time-Series Foundation Model</div>
+<div class="meta-line">Authors: Mohammad Talaei, Mohammad Goudarzi, Maille Todd, Vanessa N. L. Wong, Iadine Chadès</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-22T09:16:31+00:00 · Latest: 2026-10-22T09:16:31+00:00</div>
+<div class="meta-line">Comments: Accepted at the NeurIPS 2026 Workshop on Tackling Climate Change with Machine Learning</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30971v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30971v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Soil moisture and temperature govern plant-water availability and microbial activity, making them key indicators for evaluating land-restoration efforts on degraded landscapes. However, the physical and data-driven models normally used to forecast them both need information that a newly instrumented restoration site does not yet have: hydraulic parameters for the former and months of per-site training data for the latter. We evaluate TimesFM 1, a 500M-parameter time-series foundation model, zero-shot on 15-minute telemetry from 27 sensor stations across three land-management regimes (Control, Treatment, Scald) at a semi-arid restoration site, forecasting 5 cm and 30 cm soil moisture and enclosure temperature at seven lead times from 1 h to 168 h. Using gap-aware rolling-origin evaluation across sensors, we find that TimesFM beats the best rule-based statistical forecasting baselines (persistence, seasonal-naive, or 7-day climatology) by 21-76% at sub-daily lead times but loses by 6-79% beyond a day, a pattern explained by a diurnal-alignment mechanism that holds for both soil-moisture depths and temperature. A CatBoost baseline trained walk-forward on the same origins with full history and weather covariates never wins overall, and we show that its weakness is partly a cold-start effect specific to short deployments. We additionally quantify the inference cost of zero-shot forecasting on commodity CPU hardware. Our results highlight a practical trade-off between zero-shot forecasting capability, predictive performance, and computational efficiency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Soil moisture and temperature govern plant-water availability and microbial activity, making them key indicators for evaluating land-restoration efforts on degraded landscapes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning Cole-Hopf Coordinates for Stochastic Growth Dynamics: the KPZ class</div>
+<div class="meta-line">Authors: Lorenzo Mensi, Simone Cuonzo, Maria Chiara Angelini, Sergio Chibbaro, Cyril Furtlehner, Alberto Rosso</div>
+<div class="meta-line">First: 2026-10-22T08:38:27+00:00 · Latest: 2026-10-22T08:38:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30919v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30919v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Inferring effective equations from observations of nonlinear stochastic processes is challenging because individual trajectories are noisy realizations, while the relevant physical information is encoded in ensemble statistics. We introduce a data-driven framework that learns a change of variables in which nonlinear stochastic dynamics become linear. The model combines a neural change of representation with a linear stochastic latent evolution and is trained through a short-time moment-matching objective, thereby avoiding trajectory \rev{simulation} during optimization. This construction yields an interpretable generative model: both the learned transformation and the latent evolution operators can be directly inspected.
+  We validate the method on the one-dimensional Kardar--Parisi--Zhang (KPZ) equation, a paradigmatic model of stochastic growth for which the Cole--Hopf transformation maps the nonlinear dynamics to the stochastic heat equation. From simulated height trajectories alone, the model recovers the local exponential Cole--Hopf map and the associated linear stochastic operator. Generated trajectories reproduce the main statistical signatures of the KPZ universality class, including the growth law $\mathrm{Var}(h^{t})\sim t^{2β}$ with $β=1/3$ and the GOE Tracy--Widom height distribution for flat initial conditions. These results show that interpretable stochastic equations can be inferred from data by learning representations in which the dynamics closes in a simple form. Furthermore the development of the physical informed learning permits to get insights on the physics of the dynamical process.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Inferring effective equations from observations of nonlinear stochastic processes is challenging because individual trajectories are noisy realizations, while the relevant physical information is encoded in ensemble statistics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Decoupling candidate dual AGN from chance superpositions in the GOTHIC survey via a deep-learning framework</div>
+<div class="meta-line">Authors: Bhavesh Mukheja, Snehanshu Saha, Anwesh Bhattacharya, Mousumi Das, Françoise Combes, Sudhanshu Barway</div>
+<div class="meta-line">First: 2026-08-25T07:30:33+00:00 · Latest: 2026-10-22T07:15:22+00:00</div>
+<div class="meta-line">Comments: Submitted to MNRAS. Supplementary Material merged in the main text</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.24164v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.24164v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Dual active galactic nuclei (DAGN) mark a critical phase in the evolution of merging galaxies and the pairing of supermassive black holes, yet they remain difficult to identify in large imaging surveys because of projection effects and limited spatial resolution. Compact foreground stars and unresolved substructure can mimic dual nuclei through chance superposition, complicating automated detection. We revisit the 46,061 galaxies flagged but rejected as DAGN candidates by the GOTHIC pipeline, primarily because the two nuclei fell within the SDSS fibre aperture or exceeded its separation threshold. We train a supervised deep-learning framework based on the YOLOv11 oriented-bounding-box architecture on annotated SDSS imaging to separate genuine dual nuclei from foreground stellar contaminants and other spurious alignments. The final model attains a validation precision of 0.919, recall of 0.905, and $F_1$ of 0.912, and yields 29,605 dual-nucleus candidates after removing star-dominated and blended detections. Structured visual inspection indicates that $54.5$--$62\%$ are consistent with genuine dual nuclei, implying $\sim(1.4$--$1.8)\times10^{4}$ plausible systems. Cross-calibrating the YOLO separation against the deterministic GOTHIC centroid measurement and restricting to the compact regime ($d \le 6.87&#x27;&#x27;$) gives a conservative subset of $\sim 13{,}672$ candidates, reaching calibrated separations of $\sim 0.56&#x27;&#x27;$. Spectroscopy of the most compact ($\le 1$~kpc) systems shows spectra dominated by stellar absorption, with no resolved double-peaked emission, so confirmation requires higher-resolution follow-up. The catalogue is a statistically refined list of candidates, not confirmed DAGN. Nonetheless, deep-learning detection substantially reduces contamination and expands the plausible DAGN census.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Dual active galactic nuclei (DAGN) mark a critical phase in the evolution of merging galaxies and the pairing of supermassive black holes, yet they remain difficult to identify in large imaging surveys because of projection effects and limited spatial resolution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">StochIKM: Automated High-Fidelity Reconstruction of Individual Patient Data from Published Kaplan-Meier Curves</div>
+<div class="meta-line">Authors: Liangze Ke, Daniel Zelterman, Wei Wei, Guannan Gong</div>
+<div class="meta-line">First: 2026-10-21T03:05:49+00:00 · Latest: 2026-10-22T02:47:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29122v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.29122v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Individual patient data are the gold standard for secondary analysis of time-to-event evidence, but they are rarely released, and reconstruction from a published Kaplan-Meier figure could help. Existing methods all claim high fidelity, each judged by whichever agreements it happens to achieve, and each returns a single dataset although the map from figure to data is not bijective. We define fidelity explicitly: a dataset is admissible when it reproduces the risk table exactly, follows the digitized curve to within the image resolution, and respects the printed median, interval and event count. We propose StochIKM, a stochastic algorithm that digitizes the figure with a vision-capable language model and uses the high-fidelity definition as constraints, returning an admissible set of individual patient datasets. A solution is guaranteed to exist whenever the figure has been read correctly, so a failure indicts either the published figure or its digitization. In simulation and in 79 arms from published oncology trials, StochIKM reproduces the published risk tables and medians more closely than LLM-improved IPDfromKM, a high-impact alternative.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Individual patient data are the gold standard for secondary analysis of time-to-event evidence, but they are rarely released, and reconstruction from a published Kaplan-Meier figure could help.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Randomized Recruitment Driven Sampling</div>
+<div class="meta-line">Authors: Adam Visokay, Laura Boudreau, Rachel M. Heath, Tyler H. McCormick</div>
+<div class="meta-line">First: 2026-02-27T23:03:34+00:00 · Latest: 2026-10-21T23:37:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.00365v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.00365v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Surveys are critical inputs for research and policy, yet, enumerating a sampling frame is logistically infeasible or financially nonviable in many circumstances, such as during pandemics, natural disasters, or armed conflict. Respondent Driven Sampling (RDS) does not require a sampling frame, yet non-random peer recruitment often introduces substantial bias, particularly under high homophily. We introduce and evaluate Randomized Recruitment Driven Sampling (RRDS), a cellphone-based adaptation of RDS that incorporates researcher-controlled randomization into each recruitment wave. While standard RDS is necessary for stigmatized groups where network transparency is infeasible, RRDS is designed for low-stigma populations that become difficult to access due to logistical barriers. In these contexts, RRDS enforces the random recruitment assumption that traditional RDS relies upon but rarely achieves. Through simulation and an experiment surveying Bangladeshi garment workers during the COVID-19 pandemic, we demonstrate that RRDS produces less biased estimates and improved confidence interval coverage compared to traditional RDS. RRDS offers a scalable, remote-compatible alternative for studying low-stigma groups in challenging contexts where large-scale probability sampling is unsafe or infeasible.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Surveys are critical inputs for research and policy, yet, enumerating a sampling frame is logistically infeasible or financially nonviable in many circumstances, such as during pandemics, natural disasters, or armed conflict.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">First Results of Calculation of the Dayside Magnetopause Reconnection Rate with TRACERS</div>
+<div class="meta-line">Authors: D. E. da Silva, L. J. Chen, B. Burkholder, C. J. Martin, B. Michotte de Welle, I. DesJardin, S. A. Fuselier, K. J. Trattner, S. M. Petrinec, G. Cucho-Padin, D. Sur, N. Y. Buzulukova, J. Bonnell, J. S. Halekas, D. Miles, S. Henderson, J. Dorelli</div>
+<div class="meta-line">First: 2026-10-21T22:54:31+00:00 · Latest: 2026-10-21T22:54:31+00:00</div>
+<div class="meta-line">Comments: Under revision for Journal of Geophysical Research: Space Physics</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30517v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30517v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Quantifying the rate of reconnection remains a key challenge in the study of geomagnetic storms. In this study, we present the first results from the new Tandem Reconnection and Cusp Electrodynamics Reconnaissance Satellites (TRACERS) mission to calculate the reconnection rate from dispersed ion populations measured in the cusp, using previously developed methodology. We study ion dispersion events in two storms. During the first storm, which occurred on September 30, 2025, 21 dispersion events were identified in TRACERS 2 ion data as a combined result of geospace dynamics and the spacecraft cusp encounters. Throughout this time when ion dispersion was detected by TRACERS , the reconnection rate is calculated and is shown to track reasonably well with another measure of geomagnetic activity, the Cross Polar Cap Potential (CPCP) as obtained by the Super Dual Auroral Radar Network (SuperDARN). The dispersions are correlated with the smoothed CPCP, and a correlation of $r^2=0.62$ was found using the dispersions from the onset and main phase of the storm. The correlation disappears when including dispersions from the recovery period. The distribution of reconnection rates throughout this storm lies generally between 0.1 - 1.5 mV/m, slightly lower than previous reconnection rates calculated with DMSP, but consistent with in-situ observations made with Polar. In this work, we also apply a previously developed automatic identification algorithm for ion-energy cusp dispersion to TRACERS, with the intent that it may serve as a tool for future statistical analysis as the data volume becomes too large to manually review.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Quantifying the rate of reconnection remains a key challenge in the study of geomagnetic storms.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian Downscaling of Satellite-Derived Solar-Induced Chlorophyll Fluorescence</div>
+<div class="meta-line">Authors: Russell Goebel, Leeza Moldavchuk, Taylor S. Jones, Jonathan Dooley, Lucy R. Hutyra, Luis Carvalho</div>
+<div class="meta-line">First: 2026-10-21T22:40:30+00:00 · Latest: 2026-10-21T22:40:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30508v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30508v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present an extendable Bayesian framework for spatial downscaling of satellite-derived measurements with coarse, irregular footprints. Motivated by measurements of solar-induced chlorophyll fluorescence (SIF) from the earth-observing OCO-2 satellite, we model coarse-resolution observations as noisy, weighted averages over an underlying fine-resolution spatial field. The latent process is defined over a regular grid and regularized using a Simultaneous Autoregressive (SAR) prior, yielding a sparse precision structure that enforces spatial smoothness. This formulation enables efficient posterior inference including uncertainty quantification and naturally accommodates land cover information through modified neighborhood structures or covariates. To assess accuracy, we conduct a semi-synthetic validation using albedo data derived from Sentinel-2 satellite surface reflectance, finding strong correspondence between posterior means and the synthetic generating field (R2 = 0.72 when including the proportion of water as a covariate and 0.57 without any covariates). We apply our method to a high-density OCO-2 target mode SIF observations over Boston, demonstrating that it produces fine-resolution posterior maps that reflect heterogeneity in urban environments and align with greenness, with a moderate relationship with the Normalized Difference Vegetation Index (NDVI) (R2 = 0.417 for pixels with 20+ overlapping soundings, 0.323 overall). Our approach achieves high-resolution recovery of satellite measurements with principled uncertainty quantification.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present an extendable Bayesian framework for spatial downscaling of satellite-derived measurements with coarse, irregular footprints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Bayesian Copula Dirichlet Process GLM for Longitudinal Data</div>
+<div class="meta-line">Authors: Shijie Yuan, Entejar Alam, Asmit Chakraborty, Paul Rathouz, Jonathan Schildcrout, Peter Müller</div>
+<div class="meta-line">First: 2026-10-21T21:28:42+00:00 · Latest: 2026-10-21T21:28:42+00:00</div>
+<div class="meta-line">Comments: 31 pages, 9 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30467v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30467v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We introduce a semiparametric Bayesian generalized linear model (GLM) for longitudinal continuous outcomes that preserves the usual interpretation of the GLM regression structure while leaving the baseline distribution nonparametric. The proposed copula Dirichlet process generalized linear model (CDPGLM) combines a Dirichlet process prior for the baseline distribution, a parametric GLM regression structure for covariate effects, and a copula for longitudinal within--subject dependence. This construction separates modeling the marginal distribution of an individual repeated measurement from modeling the association: the Dirichlet process GLM component defines the marginal density and regression mean, whereas the copula captures dependence among repeated measurements. Compared with a parametric beta mixed--effects model, the CDPGLM provides similarly efficient estimation of regression effects while being substantially more robust to estimate marginal distributions and lower-tail probabilities (the complement of exceedance probability). In an application to data from the National Heart, Lung, and Blood Institute (NHLBI) Lung Health Study, the CDPGLM and a parametric mixed beta model gave comparable inference on regression coefficients, but the CDPGLM more closely matched the empirical marginal distribution and reported more realistic and detailed lower--tail risk summaries.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We introduce a semiparametric Bayesian generalized linear model (GLM) for longitudinal continuous outcomes that preserves the usual interpretation of the GLM regression structure while leaving the baseline distribution nonparametric.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Linear and nonlinear stability of rate-and-state faults</div>
+<div class="meta-line">Authors: Robert C. Viesca, Dmitry I. Garagash</div>
+<div class="meta-line">First: 2025-12-21T13:25:26+00:00 · Latest: 2026-10-21T21:08:26+00:00</div>
+<div class="meta-line">Comments: 40 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.18729v3">Abs</a> · <a href="https://arxiv.org/pdf/2512.18729v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Models of faults incorporating slip rate- and state-dependent friction have reproduced phenomena from spontaneous slow, aseismic slip to earthquake-generating dynamic rupture. Numerical explorations of model parameter space show sudden transitions in behavior. However these boundaries are poorly constrained analytically, with commonly used scalings derived assuming unrepresentative conditions of uniform sliding on an infinite, homogeneous fault. In this work, we demonstrate that an analysis of linear stability can reflect model conditions. We examine two scenarios that move beyond the classical case: an asperity driven by the steady creep of its surroundings, and a finite fault experiencing a constant rate of shear loading. We identify the critical fault dimension $L_c$ at which point linear stability is lost. Beyond this linear regime, the non-linear nature of the friction law implies the loss of memory of loading conditions as instability progresses and the existence of universal solutions describing this process. We refine prior analyses of this non-linear instability and find the minimum fault size that can support self-sustaining, unstable acceleration towards dynamic rupture. We examine the role of the state evolution law and delineate conditions under which faults may be linearly stable but non-linearly unstable, requiring finitely large perturbations to trigger instability. For both the linear and non-linear analysis, we consider scenarios of two- and three-dimensional deformation. On the basis of numerical solutions, approximate but accurate algebraic expressions for the transition boundaries are presented. These results provide means for careful model design and to delimit plausible regions of parameter space when considering physical observations of stable creep, aseismic (slow slip) or seismic transients.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Models of faults incorporating slip rate- and state-dependent friction have reproduced phenomena from spontaneous slow, aseismic slip to earthquake-generating dynamic rupture.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Penalized Fair Regression for Multiple Groups in Chronic Kidney Disease</div>
+<div class="meta-line">Authors: Carter H. Nakamoto, Lucia Lushi Chen, Agata Foryciarz, Sherri Rose</div>
+<div class="meta-line">First: 2025-12-19T08:33:48+00:00 · Latest: 2026-10-21T20:17:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.17340v3">Abs</a> · <a href="https://arxiv.org/pdf/2512.17340v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Fair regression methods have the potential to mitigate societal bias concerns in health care, but there has been little work on penalized fair regression when multiple groups experience such bias. We propose a general regression framework that addresses this gap with unfairness penalties for multiple groups. Our approach is demonstrated for binary outcomes with true positive rate disparity penalties. It can be efficiently implemented through reduction to a cost-sensitive classification problem. We additionally introduce novel score functions for automatically selecting penalty weights. Our penalized fair regression methods are empirically studied in simulations, where they achieve a fairness-accuracy frontier beyond that of existing comparison methods. Finally, we apply these methods to a national multi-site primary care study of chronic kidney disease to develop a fair classifier for end-stage renal disease. There we find substantial improvements in fairness for multiple race and ethnicity groups who experience societal bias in the health care system without any appreciable loss in overall fit.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Fair regression methods have the potential to mitigate societal bias concerns in health care, but there has been little work on penalized fair regression when multiple groups experience such bias.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Policy Learning with Observational Data: The Case of Hepatitis C Treatment for HIV/HCV Co-Infected Patients</div>
+<div class="meta-line">Authors: Raphaël Langevin</div>
+<div class="meta-line">First: 2026-05-15T19:56:25+00:00 · Latest: 2026-10-21T18:36:53+00:00</div>
+<div class="meta-line">Comments: 76 pages, 10 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.16593v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.16593v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Decision-makers frequently must choose a single action from a finite set of alternatives -- for example, physicians selecting a treatment, investors choosing a portfolio risk level, or judges determining sentences. To improve outcomes, policymakers often issue policy rules or guidelines to inform such choices. In this paper, I show how to generally derive policy rules from observational data in a multi-action framework under relatively weak assumptions about the underlying structure of the heterogeneous sampled population. Conditional average treatment effects (CATEs) are consistently estimated via a weighted K-means algorithm, assuming the outcome model is correctly specified within each homogeneous subgroup. I then use standard decision trees to implement feasible policy rules, allowing for both perfect and imperfect adherence to treatment. The methodology is applied to treatment options for Hepatitis C (HCV) among patients co-infected with human immunodeficiency virus (HIV), a setting in which no uniform guideline exists for modern pharmaceutical therapies. The results identify a subgroup of patients with approximately an 80% probability of spontaneous HCV clearance without treatment. Estimation results also show that reallocating treatments among treated patients could have reduced total treatment costs by CAN$2.5-4.5 million while increasing aggregate health benefits relative to the status quo. These findings demonstrate that the proposed approach can generate improved, data-driven treatment guidelines for the management of HIV/HCV co-infected patients.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Decision-makers frequently must choose a single action from a finite set of alternatives -- for example, physicians selecting a treatment, investors choosing a portfolio risk level, or judges determining sentences.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Sequential SBI for Resonance Searches at the LHC</div>
+<div class="meta-line">Authors: Henning Bahl, Ranit Das</div>
+<div class="meta-line">First: 2026-10-21T18:00:02+00:00 · Latest: 2026-10-21T18:00:02+00:00</div>
+<div class="meta-line">Comments: 49 pages, 26 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30245v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30245v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neural simulation-based inference has been shown to extract significantly more information from LHC data than histogram-based analyses. So far, it has mostly been applied to couplings, for which the polynomial structure of the scattering amplitude can be exploited. Masses and widths instead move and deform the signal in phase space, and learning their likelihood requires many event samples covering the continuous theory parameter space. We show how sequential simulation-based inference can address this by iteratively concentrating the simulations where the observed data points. Using a parton-level example with an exact reference likelihood and reconstruction-level analyses of $A\to ZH\to \ell\ell b\bar b$ and $Y\to HH\to (t\bar t)(t\bar t)$, we demonstrate that sequential training produces significantly more accurate and better calibrated likelihoods than single round training with the same amount of training events.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neural simulation-based inference has been shown to extract significantly more information from LHC data than histogram-based analyses.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">2Flow2SN: Dusty Supernova Cosmology with Photometric Redshifts and Contamination using Neural Simulation-Based Inference</div>
+<div class="meta-line">Authors: Benjamin M. Boyd, Maximilian Autenrieth, Kaisey S. Mandel, Matthew Grayling, Madeleine Ginolin, Lisa Kelsey, Stephen Thorp</div>
+<div class="meta-line">First: 2026-10-21T18:00:02+00:00 · Latest: 2026-10-21T18:00:02+00:00</div>
+<div class="meta-line">Comments: 30 pages, 9 figures, 6 tables, submitted to MNRAS</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30244v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30244v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Photometric Type Ia supernova (SN Ia) cosmology in the era of the Vera C. Rubin Observatory&#x27;s Legacy Survey of Space and Time (LSST) demands statistical frameworks that simultaneously account for selection effects, photometric redshift uncertainties and non-Ia contamination at scale. We present FlowSN2, a modular statistical framework combining hierarchical Bayesian modelling and simulation-based inference (SBI), that reframes photometric SN cosmology from a regression task to a joint inference problem over light curve summaries and photometric redshifts. By employing neural likelihood estimation via normalising flows, FlowSN2 approximates the data distributions of selected objects in a form that can be reused across different cosmological models, achieving amortisation over the Hubble diagram. This amortisation enables inference across alternative cosmological parameterisations, such as $w_0w_a\mathrm{CDM}$, away from the fiducial training cosmology. The framework integrates a standardisation model that disentangles intrinsic SN variations from extrinsic host-galaxy dust effects and adopts a principled Bayesian resampling approach to propagate SN classification uncertainty, without requiring an explicit contaminant likelihood. Across simulated tests spanning five cosmological parameter sets, our framework recovers true cosmological and population parameters, with posteriors in close agreement with both tractable analytical solutions and pure-Ia baselines. Conveniently, the framework enables Bayesian model comparison at negligible additional computational cost, providing a valuable tool for addressing debates surrounding SN standardisation and evolving dark energy. Capable of scaling to over a hundred thousand SNe without retraining, FlowSN2 offers an interpretable and statistically principled solution for cosmological inference with upcoming wide-field photometric surveys.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Photometric Type Ia supernova (SN Ia) cosmology in the era of the Vera C.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0512.html">20261019_0512</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0551.html">20261017_0551</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0659.html">20261010_0659</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0726.html">20261008_0726</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0555.html">20261004_0555</a>
+<a href="archive/20261003_0646.html">20261003_0646</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0545.html">20260928_0545</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0555.html">20260926_0555</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0623.html">20260922_0623</a>
+<a href="archive/20260921_0508.html">20260921_0508</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0550.html">20260918_0550</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0524.html">20260910_0524</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0524.html">20260830_0524</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0320.html">20260820_0320</a>
+<a href="archive/20260819_0322.html">20260819_0322</a>
+<a href="archive/20260818_0321.html">20260818_0321</a>
+<a href="archive/20260817_0315.html">20260817_0315</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0352.html">20260814_0352</a>
+<a href="archive/20260813_0356.html">20260813_0356</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0421.html">20260806_0421</a>
+<a href="archive/20260805_0419.html">20260805_0419</a>
+<a href="archive/20260804_0421.html">20260804_0421</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0412.html">20260731_0412</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0415.html">20260728_0415</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0412.html">20260725_0412</a>
+<a href="archive/20260724_0408.html">20260724_0408</a>
+<a href="archive/20260723_0408.html">20260723_0408</a>
+<a href="archive/20260722_0415.html">20260722_0415</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0400.html">20260718_0400</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0406.html">20260715_0406</a>
+<a href="archive/20260714_0407.html">20260714_0407</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0443.html">20260710_0443</a>
+<a href="archive/20260709_0417.html">20260709_0417</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0448.html">20260707_0448</a>
+<a href="archive/20260706_0407.html">20260706_0407</a>
+<a href="archive/20260705_0406.html">20260705_0406</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0415.html">20260703_0415</a>
+<a href="archive/20260702_0446.html">20260702_0446</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_1045.html">20260630_1045</a>
+<a href="archive/20260630_1021.html">20260630_1021</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
