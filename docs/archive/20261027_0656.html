@@ -1,0 +1,897 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-27 06:56</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261027_0656</div>
+    <div class="row"><div class="card">
+<div class="title">Efficient Maximum Likelihood Estimation of Multiple Membership Linear Mixed Models, with an Application to Educational Value-Added Assessments</div>
+<div class="meta-line">Authors: Andrew T. Karl, Yan Yang, Sharon L. Lohr</div>
+<div class="meta-line">Venue: Computational Statistics &amp; Data Analysis, Volume 59, March 2013, Pages 13-27</div>
+<div class="meta-line">First: 2014-03-29T16:22:59+00:00 · Latest: 2026-10-23T17:52:07+00:00</div>
+<div class="meta-line">Comments: 25 pages. Minor improvements and corrections to the mathematical exposition and notation; a brief subsection on REML estimation and an accompanying reference have been added. Numerical results are unchanged</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/1403.7644v2">Abs</a> · <a href="https://arxiv.org/pdf/1403.7644v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The generalized persistence (GP) model, developed in the context of estimating ``value added&#x27;&#x27; by individual teachers to their students&#x27; current and future test scores, is one of the most flexible value-added models in the literature. Although developed in the educational setting, the GP model can potentially be applied to any structure where each sequential response of a lower-level unit may be associated with a different higher-level unit, and the effects of the higher-level units may persist over time. The flexibility of the GP model, however, and its multiple membership random effects structure lead to computational challenges that have limited the model&#x27;s availability. We develop an EM algorithm to compute maximum likelihood estimates efficiently for the GP model, making use of the sparse structure of the random effects and error covariance matrices. The algorithm is implemented in the package GPvam in R statistical software. We give examples of the computations and illustrate the gains in computational efficiency achieved by our estimation procedure.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The generalized persistence (GP) model, developed in the context of estimating ``value added&#x27;&#x27; by individual teachers to their students&#x27; current and future test scores, is one of the most flexible value-added models in the literature.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Embodied Emissions of 2.5D and 3D Scaling in Chipletized GPUs for Low-Carbon AI</div>
+<div class="meta-line">Authors: Hannah Watson, Arjun Singh, Jennifer Stephenson, Job Soethoudt, Debjyoti Bhattacharjee, James Myers</div>
+<div class="meta-line">First: 2026-10-23T16:03:19+00:00 · Latest: 2026-10-23T16:03:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32830v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32830v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">GPU compute resources are scaling to support growing AI workloads, leading to further rises in the climate change impact of hyperscale data centers that rely on high-performance GPUs. To model how packaging decisions impact the carbon footprint we have estimated the embodied emissions (EE) of a chiplet-based GPU that has been scaled in 2.5D and 3D using the imec.netzero modelling platform. We doubled the number of compute units and high bandwidth memory (HBM) capacity in the 2.5D and 3D scaled systems and found that 3D scaling results in an 89% increase in EE, as compared to an increase of 141% for 2.5D scaling, positioning 3D scaling as an attractive solution to limit the embodied emissions due to GPU scaling.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">GPU compute resources are scaling to support growing AI workloads, leading to further rises in the climate change impact of hyperscale data centers that rely on high-performance GPUs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The iSTORM Instrument for Airborne Measurements of Gamma-Ray Emissions from Thunderstorms</div>
+<div class="meta-line">Authors: Daniel Shy, J. Eric Grove, Bernard Phlips, Alena Schell, Mary Johnson-Rambert, Mason Quick, David Corredor, Scott Podgorny, Roy Salinas, Mitch Davis</div>
+<div class="meta-line">First: 2026-08-06T19:39:56+00:00 · Latest: 2026-10-23T15:54:53+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.09990v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.09990v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The in-Situ Thunderstorm Observer for Radiation Mechanisms (iSTORM) is a gamma-ray spectrometer to study gamma-ray transients originating from thunderstorms, such as glows and terrestrial gamma-ray flashes (TGFs). It is designed and built by the U.S. Naval Research Laboratory for deployment aboard a NASA ER-2 aircraft. Using an array of 32 one-inch-diameter $\mathrm{CeBr}_3$ scintillators read out with silicon photomultipliers (SiPMs), the instrument achieves an energy range of $\sim 250 \ \mathrm{keV}$ to $5 \ \mathrm{MeV}$ under flight conditions, with a total geometrical area of $157 \ \mathrm{cm^2}$. One of two gamma-ray instruments in the ALOFT campaign, iSTORM recorded glows, terrestrial gamma-ray flashes (TGFs), and the newly discovered flickering gamma-ray flashes (FGFs).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The in-Situ Thunderstorm Observer for Radiation Mechanisms (iSTORM) is a gamma-ray spectrometer to study gamma-ray transients originating from thunderstorms, such as glows and terrestrial gamma-ray flashes (TGFs).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Track finding and particle identification performance with particle physics foundation models</div>
+<div class="meta-line">Authors: Shuhang Li, Haiwang Yu, Gabor Galgoczi, Yeonju Go, Yi Huang, David Park, Michael Peters, Christopher Pinkenburg, Christof Roland, Jin Huang, Yihui Ren, Joseph D. Osborn</div>
+<div class="meta-line">First: 2026-10-22T12:32:26+00:00 · Latest: 2026-10-23T14:05:00+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31180v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31180v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern high energy nuclear and particle physics experiments produce large amounts of sparse data that must be reduced significantly in size before performing physics analysis. Recently, there has been an effort to evaluate Foundation Models as a potential tool for performing data analysis. These models have been shown to learn features in high dimensional datasets based on the multi-modal data they are trained on. To show their effectiveness at performing complex pattern recognition tasks, such as reconstructing charged particles in a magnetic field, we evaluated the performance of a Foundation Model based reconstruction on several downstream tasks with a dataset composed of spacepoints in a Time Projection Chamber. We show that the performance of the Foundation Model based data analysis significantly improves upon that of traditional methods, and furthermore can be adapted to learn additional tasks that are not necessarily related to the initial training objective.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern high energy nuclear and particle physics experiments produce large amounts of sparse data that must be reduced significantly in size before performing physics analysis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When does boundary-condition uncertainty outweigh thermal and vegetation effects in street canyon flow? A global sensitivity analysis of input uncertainty</div>
+<div class="meta-line">Authors: Albert Moreno Català, Joan Calafell Sandiumenge, Nikolaj T. Mücke, Jan Mateu Armengol</div>
+<div class="meta-line">First: 2026-10-23T13:43:27+00:00 · Latest: 2026-10-23T13:43:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32631v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32631v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Computational Fluid Dynamics (CFD) is increasingly used to resolve wind, heat, and pollution patterns in cities with high fidelity but high computational cost. Thermal effects and vegetation are often neglected despite being important drivers, yet their influence may be masked by variability from other uncertain inputs. This work determines how precisely model parameters and boundary conditions must be known for these effects to govern output uncertainty in the velocity, temperature, and concentration fields of a two-dimensional street canyon. A global Sobol analysis of 24 parameters is made tractable by a surrogate trained on Reynolds-Averaged Navier--Stokes (RANS) simulations, combining principal component analysis (PCA) with multilayer perceptrons (MLPs). Two ventilation regimes assess the variance due to thermal and vegetation parameters as uncertainty in all other inputs is progressively reduced. At typical uncertainty levels, turbulence closure constants and inflow turbulence profiles govern variability in all three fields in both regimes. Under weak ventilation, solar forcing becomes the main source of temperature variability once the remaining uncertainties are halved, and of concentration variance once they are reduced to a quarter (about $\pm11\%$ for the dominant closure constant and $\pm12\%$ for the emission rate). In contrast, vegetation contributes significantly at typical uncertainty levels. Under strong ventilation, however, the canopy never overtakes the closure constants, even when the dominant one is known to $\pm5\%$. Spatially, both effects peak at road level and along canyon walls, which influence outdoor exposure and indoor infiltration, suggesting that high-resolution exposure studies should account for them.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Computational Fluid Dynamics (CFD) is increasingly used to resolve wind, heat, and pollution patterns in cities with high fidelity but high computational cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Score-optimized copula coupling for multivariate ensemble post-processing</div>
+<div class="meta-line">Authors: Mária Lakatos</div>
+<div class="meta-line">First: 2026-10-17T09:54:38+00:00 · Latest: 2026-10-23T13:42:42+00:00</div>
+<div class="meta-line">Comments: 26 pages, 7 figures, 9 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24591v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.24591v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Statistical post-processing can calibrate the individual components of an ensemble forecast but may also distort relationships between forecast dimensions. This paper proposes Score-Optimized Copula Coupling, which rearranges calibrated forecast samples according to an optimized dependence structure to restore potentially lost dependencies. We assess fixed and adaptively updated versions using wind-speed and temperature forecasts. In the variable-specific spatial case studies, all versions significantly outperform the strongest benchmarks, with improvements of 1.08-2.02 percent in energy score and 5.45-7.97 percent in variogram score. A third case study at 24 co-located stations shows that one optimized structure can represent both spatial and inter-variable relationships. The largest energy and variogram score improvements are 3.98 and 3.69 percent for spatial dependence and 1.16 and 1.06 percent for inter-variable dependence; all are statistically significant. Additional calibration terms improve covariance representation but can reduce gains in the other scores.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Statistical post-processing can calibrate the individual components of an ensemble forecast but may also distort relationships between forecast dimensions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Derivation of the Sample-Size Scaling of TWO-NN Intrinsic-Dimension Estimates from Molecular Dynamics Trajectories</div>
+<div class="meta-line">Authors: Riccardo Capelli</div>
+<div class="meta-line">First: 2026-09-04T09:18:18+00:00 · Latest: 2026-10-23T13:38:35+00:00</div>
+<div class="meta-line">Comments: 11 pages, 4 figures; Supplementary Material included</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.04914v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.04914v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The intrinsic dimension of a dataset is the number of independent directions needed to describe the space occupied by its data. Nearest-neighbor estimators infer it from how the probability of finding a neighbor grows around each sampled point. Because the neighbor distances $r$ decrease as the sample grows, the estimated dimension can depend strongly on the number $N$ of available points, which in molecular dynamics is set by trajectory length and saving frequency. We derive the large-sample behavior of the TWO-NN estimator for data drawn from a smooth $d$-dimensional space. The typical nearest-neighbor distance scales as $N^{-1/d}$, and smooth deviations from local uniformity produce corrections in powers of $N^{-2/d}$. Isotropic noise adds a correction proportional to $N^{+2/d}$; for a five-dimensional hyperplane in 100 noisy features, the extended expansion recovers the dimension within a few percent when noise is moderate. We test the scaling on ten independent 100 $μ$s simulations of alanine dipeptide, represented by the pairwise distances among its ten heavy atoms, whose geometric dimension is $3n_{\mathrm{at}}-6=24$. Over the investigated range, the estimate does not depend systematically on the temporal spacing between configurations, but increases from $7.6$ to $15.6$ as $N$ grows from $10^2$ to $2\times10^5$. Extrapolations that retain corrections through $r^2$, $r^4$, and $r^6$ give limiting dimensions of $24.81$, $23.47$, and $25.30$, respectively. All three estimates lie within 6% of the known dimension and bracket it, and their spread measures the uncertainty due to truncation. The derived scaling provides a practical route from finite-sample estimates to the geometric dimension.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The intrinsic dimension of a dataset is the number of independent directions needed to describe the space occupied by its data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Shared Is Not Enough: Predictor Width and Factor Readability Under Masked Latent Prediction</div>
+<div class="meta-line">Authors: Nilotpal Kakati</div>
+<div class="meta-line">First: 2026-10-23T12:44:02+00:00 · Latest: 2026-10-23T12:44:02+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32562v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32562v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Masked latent prediction methods such as I-JEPA aim to learn predictable features, but what determines which information they retain is less clear. We built a simulator in which every factor behind an image is known, so a probe can measure how readable each factor remains after training. We trained small encoders (0.7M parameters) with I-JEPA, SimCLR and BYOL on the same pairs of views and probed a factor that both views share. I-JEPA had a predictor with half the encoder&#x27;s width and depth, the proportions it uses for ViT-B. Its median score was about 40% of SimCLR&#x27;s. Widening the predictor to the encoder&#x27;s width reversed this ordering at every training seed, against both other methods. We release the simulator and the trained models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Masked latent prediction methods such as I-JEPA aim to learn predictable features, but what determines which information they retain is less clear.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Workflow for Lipid Nanoparticle (LNP) Formulation Optimization Using Designed Mixture-Process Experiments and Self-Validated Ensemble Models (SVEM)</div>
+<div class="meta-line">Authors: Andrew T. Karl, Sean Essex, James Wisnowski, Heath Rushing</div>
+<div class="meta-line">Venue: Journal of Visualized Experiments (198), e65200, (2023)</div>
+<div class="meta-line">First: 2022-12-21T18:56:26+00:00 · Latest: 2026-10-23T11:52:51+00:00</div>
+<div class="meta-line">Comments: 28 pages, 18 figures, 1 table. LaTeX author version with minor corrections (via Codex GPT6 Astra) and pointers to subsequent work on SVEM whole-model testing (arXiv:2405.11156) and the SVEMnet R implementation (arXiv:2511.20968). A video demonstration accompanies the published JoVE article</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2212.11264v7">Abs</a> · <a href="https://arxiv.org/pdf/2212.11264v7">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present a Quality by Design (QbD) styled approach for optimizing lipid nanoparticle (LNP) formulations, aiming to offer scientists an accessible workflow. The inherent restriction in these studies, where the molar ratios of ionizable, helper, and PEG lipids must add up to 100%, requires specialized design and analysis methods to accommodate this mixture constraint. Focusing on lipid and process factors that are commonly used in LNP design optimization, we provide steps that avoid many of the difficulties that traditionally arise in the design and analysis of mixture-process experiments by employing space-filling designs and utilizing the recently developed statistical framework of self-validated ensemble models (SVEM). In addition to producing candidate optimal formulations, the workflow also builds graphical summaries of the fitted statistical models that simplify the interpretation of the results. The newly identified candidate formulations are assessed with confirmation runs and optionally can be conducted in the context of a more comprehensive second-phase study.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present a Quality by Design (QbD) styled approach for optimizing lipid nanoparticle (LNP) formulations, aiming to offer scientists an accessible workflow.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Avoiding Bias Due to Nonrandom Scheduling When Modeling Trends in Home-Field Advantage</div>
+<div class="meta-line">Authors: Andrew T. Karl</div>
+<div class="meta-line">First: 2018-06-21T03:56:58+00:00 · Latest: 2026-10-23T11:45:45+00:00</div>
+<div class="meta-line">Comments: 21 pages, 3 figures, 4 tables. Corrected and shortened version; substantive conclusions unchanged. Replaced exploratory bias diagnostics with a direct GLS calculation and corrected the women&#x27;s basketball covariance fit. General theory: arXiv:2003.08087. Includes ancillary code and results. Corrections implemented with Codex GPT6-Astra</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/1806.08059v3">Abs</a> · <a href="https://arxiv.org/pdf/1806.08059v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Existing approaches for estimating home-field advantage (HFA) include modeling the difference between home and away scores as a function of the difference between home and away team ratings that are treated either as fixed or random effects. We uncover an upward bias in the mixed model HFA estimates that can arise when the schedule -- and thus the random effect design matrix -- depends on team strengths, and explore why the fixed effects model is not subject to the same bias. Intraconference HFAs and standard errors are calculated for each of 3 college sports and 3 professional sports over the 2000-2017 seasons and then fitted with conference-specific slopes and intercepts to measure the potential linear population trend in HFA.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Existing approaches for estimating home-field advantage (HFA) include modeling the difference between home and away scores as a function of the difference between home and away team ratings that are treated either as fixed or random effects.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Geometry of Existence and Uniqueness of Maximum Likelihood Estimation in Categorical Response Models</div>
+<div class="meta-line">Authors: Lukas Sablica, Kurt Hornik, Thomas Rusch</div>
+<div class="meta-line">First: 2026-10-06T10:29:07+00:00 · Latest: 2026-10-23T11:35:00+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.08100v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.08100v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Nonexistence of the maximum likelihood estimate (MLE) under separation is treated as a solved problem for binary logistic regression and as a scattered collection of model-specific results everywhere else. We show that it is one phenomenon with one criterion. In a latent polyhedral categorical response model, every observed outcome corresponds to a polyhedral event in latent variables whose faces shift linearly with the parameter. Random-utility choice, cumulative-link, ranking, multivariate binary and ordinal, sequential, adjacent-category logit, and fixed-score stereotype models belong to this family. The likelihood sees each observed factor only through the columns of its threshold map, the structure vectors. A finite MLE exists if and only if the pooled structure vector set has overlap. Sufficiency requires only continuity, necessity requires only strictly threshold-increasing probabilities, and neither likelihood concavity, exchangeability, nor full design rank is needed. Positive strictly log-concave latent densities and threshold-identifiable polyhedra then yield uniqueness on the estimable span. A single linear program determines whether overlap holds, and convex cone geometry measures the dimension of separation. An application using cumulative-link models for willingness to share health data identifies observations and model terms associated with nonexistence and illustrates how the diagnostics inform model revision and sensitivity analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Nonexistence of the maximum likelihood estimate (MLE) under separation is treated as a solved problem for binary logistic regression and as a scattered collection of model-specific results everywhere else.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Direct Simulation of Poisson and Newton Kernel Distributions</div>
+<div class="meta-line">Authors: Lukas Sablica, Kurt Hornik</div>
+<div class="meta-line">First: 2026-10-23T11:28:16+00:00 · Latest: 2026-10-23T11:28:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32506v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32506v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Poisson kernel-based (PKB) distribution is a flexible and numerically convenient family on the unit sphere used for model-based clustering, uniformity testing, and directional data analysis. Available random variate generators rely on rejection from a von Mises-Fisher, angular central Gaussian, or projected Saw envelope and therefore require a rejection loop, tuning or root-finding, or a univariate setup phase. We show that none is needed. A uniformly random line through the interior point $ρμ$ meets the sphere in two points; selecting one with probability proportional to the opposite segment length returns exactly the target density. The sampler is exact, rejection- and tuning-free, uses one uniform direction and one Bernoulli draw, and costs $O(d)$ operations. We place the distribution in the power-Saw family of densities proportional to $\|x-ρμ\|^{-ξ}$ and show that, for $d\geq3$, the same construction is exact for one further exponent. This introduces the Newton kernel-based (NKB) distribution, whose normalizing constant is identically one. Across a wide grid of dimensions, concentrations, and sample sizes, the direct sampler is faster than the better of two previously recommended methods in every case, with the largest gains at moderate concentration.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Poisson kernel-based (PKB) distribution is a flexible and numerically convenient family on the unit sphere used for model-based clustering, uniformity testing, and directional data analysis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data Quality Audit and Bivariate Temperature-Humidity Analysis of a Long-Term LoRaWAN Network: Anomaly Detection, PCA, Clustering and Machine Learning</div>
+<div class="meta-line">Authors: Mamadou Sow</div>
+<div class="meta-line">First: 2026-10-23T10:04:24+00:00 · Latest: 2026-10-23T10:04:24+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32438v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32438v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Long-term environmental IoT/LPWAN deployments often aggregate heterogeneous data streams from diverse devices without systematic auditing of each variable&#x27;s actual coverage prior to analysis-an increased risk when multiple sensor types coexist within the same network. This work proposes a C++17 processing pipeline applied to the Tour Perret LoRaWAN dataset (421 937 frames, June 2021--June 2023, 5 devices). A systematic coverage audit integrated into the extraction phase reveals that CO2 is completely missing (0% coverage) and pressure is reported only by an isolated base module (Wyres, 4.24% of the corpus), invalidating the initial hypothesis of a joint four-variable analysis. The analysis is refocused on the Temperature--Humidity pair, jointly available across 205{,}005 frames (95.76%) from 4 Elsys EMS sensors. The pipeline sequentially performs anomaly detection (modified Z-score, Isolation Forest), bivariate Principal Component Analysis, clustering (K-means, DBSCAN), and a multilayer perceptron predicting humidity from temperature and time, whose residuals serve as a detector for slow drift. On real-world data: Temperature--Humidity correlation r=-0.662, two-component PCA (PC1 =83.1% of variance), Isolation Forest detects 2.12% multivariate anomalies while univariate Z-score detects none, calibrated DBSCAN isolates 0.17% noise across 13 clusters, and the MLP achieves $R^2=0.672$ (RMSE =10.54%) in cross-validation. This work demonstrates that per-variable coverage auditing prior to modeling is a necessary methodological step for heterogeneous multi-sensor IoT datasets.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Long-term environmental IoT/LPWAN deployments often aggregate heterogeneous data streams from diverse devices without systematic auditing of each variable&#x27;s actual coverage prior to analysis-an increased risk when multiple sensor types coexist within the same network.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Honest Inference for Synthetic Controls with Imperfect Fit: Time-Split Validity and the Choice of Anchor</div>
+<div class="meta-line">Authors: Rok Spruk</div>
+<div class="meta-line">First: 2026-10-23T09:12:29+00:00 · Latest: 2026-10-23T09:12:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32383v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32383v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Synthetic controls are used for one treated unit that lies outside its donors&#x27; range, with a pre-treatment window too short for residual-based standard errors to be trusted. We propose inference that separates the periods used to fit the synthetic control from the periods used to assess its error. Weights are fitted on an early block of pre-treatment periods, and the gap on a later block calibrates the bias and the noise. The resulting interval has finite-sample coverage under an explicit restriction on how far the counterfactual may depart from the extrapolated pre-treatment gap, for any fitting rule that uses only the early block. The leading restriction bounds the curvature of the gap and leaves its slope free, and the breakdown curvature at which the interval first includes zero states how much extrapolation a conclusion needs. We show when drift bounds calibrated from donor placebos are valid and how to allow for serial dependence. In simulations, conventional intervals undercover when the treated unit drifts from its donors, while the proposed interval covers whenever its restriction holds and the noise is serially independent. Re-analyses of three classic applications show that some well-known conclusions rest on far stronger extrapolation than others.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Synthetic controls are used for one treated unit that lies outside its donors&#x27; range, with a pre-treatment window too short for residual-based standard errors to be trusted.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Women and the Nobel Prize in the sciences: an update to 2026</div>
+<div class="meta-line">Authors: Per Lunnemann, Liselotte Jauffred</div>
+<div class="meta-line">First: 2026-10-13T15:50:54+00:00 · Latest: 2026-10-23T08:58:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18592v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.18592v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Every October, the Nobel Prizes in Physics, Chemistry, Physiology or Medicine and Economic Sciences are announced, with one to three prizes in each discipline. Of the 769 Laureates (since 1901) in these four disciplines only 4% are women (30 Laureates). In 2026, there are eight Laureates within these disciplines and they are all men. Based on historical data across four fields and a Bayesian hierarchical model, we update the 8 year old model on bias in Nobel Prizes and confirm the gender gap, with exceedingly large confidence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Every October, the Nobel Prizes in Physics, Chemistry, Physiology or Medicine and Economic Sciences are announced, with one to three prizes in each discipline.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mapping Academic Sports Analytics: A Content Analysis of JQAS and JSA</div>
+<div class="meta-line">Authors: Adam Nathaniel</div>
+<div class="meta-line">First: 2026-10-23T08:47:29+00:00 · Latest: 2026-10-23T08:47:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32354v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32354v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Sports analytics has expanded rapidly in professional sports and mainstream culture, yet defining its academic core remains a challenge. In this paper, we provide an empirical map of the academic sports analytics landscape based on a systematic content analysis of approximately 700 papers published in two leading dedicated journals, the Journal of Quantitative Analysis in Sports (JQAS) and the Journal of Sports Analytics (JSA), between the years 2005 and 2024. We classify each paper by sport discipline, mathematical method, and core research area, identify recurring themes, and examine macro trends. We find game tactics, player evaluation, team ranking, result forecasting, and tournament design to be the most studied research areas in sports analytics. We highlight selected papers in each area, illustrating the wide range of mathematical methods used and sports disciplines analyzed. Our work offers a comprehensive overview of the questions, methods, and disciplines that characterize the field, serving as a foundational reference for practitioners and researchers in sports analytics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Sports analytics has expanded rapidly in professional sports and mainstream culture, yet defining its academic core remains a challenge.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Decoupling candidate dual AGN from chance superpositions in the GOTHIC survey via a deep-learning framework</div>
+<div class="meta-line">Authors: Bhavesh Mukheja, Snehanshu Saha, Anwesh Bhattacharya, Mousumi Das, Françoise Combes, Sudhanshu Barway</div>
+<div class="meta-line">First: 2026-08-25T07:30:33+00:00 · Latest: 2026-10-23T06:39:02+00:00</div>
+<div class="meta-line">Comments: Accepted for publication in Monthly Notices of the Royal Astronomical Society (MNRAS; ref. MN-26-2211-P.R1) on 2026 October 22. Supplementary material has been incorporated into the main text. Code is available at https://github.com/BhaveshMukheja/yolo-dagn</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.24164v3">Abs</a> · <a href="https://arxiv.org/pdf/2608.24164v3">PDF</a> · <a href="https://github.com/BhaveshMukheja/yolo-dagn">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Dual active galactic nuclei (DAGN) mark a critical phase in the evolution of merging galaxies and the pairing of supermassive black holes, yet they remain difficult to identify in large imaging surveys because of projection effects and limited spatial resolution. Compact foreground stars and unresolved substructure can mimic dual nuclei through chance superposition, complicating automated detection. We revisit the 46,061 galaxies flagged but rejected as DAGN candidates by the GOTHIC pipeline, primarily because the two nuclei fell within the SDSS fibre aperture or exceeded its separation threshold. We train a supervised deep-learning framework based on the YOLOv11 oriented-bounding-box architecture on annotated SDSS imaging to separate genuine dual nuclei from foreground stellar contaminants and other spurious alignments. The final model attains a validation precision of 0.919, recall of 0.905, and $F_1$ of 0.912, and yields 29,605 dual-nucleus candidates after removing star-dominated and blended detections. Structured visual inspection indicates that $54.5$--$62\%$ are consistent with genuine dual nuclei, implying $\sim(1.4$--$1.8)\times10^{4}$ plausible systems. Cross-calibrating the YOLO separation against the deterministic GOTHIC centroid measurement and restricting to the compact regime ($d \le 6.87&#x27;&#x27;$) gives a conservative subset of $\sim 13{,}672$ candidates, reaching calibrated separations of $\sim 0.56&#x27;&#x27;$. Spectroscopy of the most compact ($\le 1$ kpc) systems shows spectra dominated by stellar absorption, with no resolved double-peaked emission, so confirmation requires higher-resolution follow-up. The catalogue is a statistically refined list of candidates, not confirmed DAGN. Nonetheless, deep-learning detection substantially reduces contamination and expands the plausible DAGN census.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Dual active galactic nuclei (DAGN) mark a critical phase in the evolution of merging galaxies and the pairing of supermassive black holes, yet they remain difficult to identify in large imaging surveys because of projection effects and limited spatial resolution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bias-aware meta-analysis: beyond fixed-effect and random-effects meta-analyses</div>
+<div class="meta-line">Authors: Mingxuan Zou, Peng Ding</div>
+<div class="meta-line">First: 2026-10-23T05:29:52+00:00 · Latest: 2026-10-23T05:29:52+00:00</div>
+<div class="meta-line">Comments: 32 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32183v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32183v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Meta-analysis aims to synthesize multiple studies to obtain a summary estimate of a population parameter of interest. However, existing meta-analysis methods require strong assumptions that render them not robust to bias and heterogeneity of the studies. In particular, fixed-effect meta-analysis assumes a common parameter across the studies, whereas random-effects meta-analysis models heterogeneity as independent and identically distributed random effects, which still implies a common parameter marginally over the random effects. Due to their limitations, we propose a bias-aware meta-analysis framework that allows for heterogeneous studies with fixed, unknown biases. With no bias, our bias-aware meta-analysis reduces to fixed-effect meta-analysis; with a given bound on the bias, we can still use the fixed-effect meta-analysis point estimator and standard error, but we must inflate the critical value for confidence intervals from the standard normal quantile to a folded normal quantile. We recommend reporting the maximum bias for significance, the maximum value of the bias such that the confidence intervals exclude the null value. We propose a formal model checking procedure and recommend reporting the minimum bias for compatibility, the minimum value of the bias such that the bias-aware meta-analysis model is compatible with the observed data. We discuss the practical implementation of our method and, in particular, the approaches to calibrating the maximum bias for significance. We also compare our method with traditional fixed-effect and random-effects meta-analyses.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Meta-analysis aims to synthesize multiple studies to obtain a summary estimate of a population parameter of interest.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Agents and Tokens: Multi-Agent Autonomous Reasoning over a Hydrodynamic Token Store</div>
+<div class="meta-line">Authors: Jinpai Zhao, Albert Cerrone, Joannes Westerink, Clint Dawson</div>
+<div class="meta-line">First: 2026-05-01T21:17:55+00:00 · Latest: 2026-10-23T05:18:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.01102v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.01102v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models and the agents built on them are the most capable reasoning machines ever built, and science is beginning to put them to work. Atmospheric and oceanic sciences are starting to see agentic integration, but coastal hydrodynamics remains largely untouched by AI. Simply, agents cannot easily read its data products without saturating their context windows. A time frame from a coastal model can hold hundreds of megabytes, and if the archive&#x27;s chunking does not suit the query, the agent will spend more time downloading and compacting than gaining insights. After all, the archives were designed for storage, not for the fast, on-the-fly access agents need. Speech and music once hit the same wall. A minute of audio is millions of numbers, yet today&#x27;s audio models hold conversations and write music. They &quot;learned&quot; to do this by &quot;listening&quot; to tokens. Neural audio codecs turn waveforms into short sequences of discrete symbols that a model reads like words and decodes back into sound. Coastal water is a similar signal: dense, finely sampled, and repeatable. We are convinced it has an analogous compact native representation that preserves the salient physics. Tokens are that representation: small integers, light enough for an agent to sweep six months of a coastline in seconds. Agents can then do more than simple lookup-related tasks; they can form and test their hypotheses as they explore the tokenized representation efficiently. Herein, we build this framework, using vector quantized variational autoencoders to compress tide level, the non-tidal residual, and surface wind speed into 16x16 grids of tokens along the US Atlantic and Gulf coasts. Agents traverse and explore these grids (e.g., tracking, spatiotemporal trend analysis) considerably faster than raw archives in both on-prem and off-prem modalities, while correctly answering several types of under-specified queries.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models and the agents built on them are the most capable reasoning machines ever built, and science is beginning to put them to work.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Covariance-Informed Ensemble Score Filtering: Embedding Localized Covariance Geometry into Score-Based Transport</div>
+<div class="meta-line">Authors: Siming Liang, Peter Jan van Leeuwen, Hristo G. Chipilski, Zezhong Zhang, Feng Bao, Guannan Zhang</div>
+<div class="meta-line">First: 2026-10-23T04:25:51+00:00 · Latest: 2026-10-23T04:25:51+00:00</div>
+<div class="meta-line">Comments: 32 pages, 7 figures, 6 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32148v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32148v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Background-error covariance models are central to atmospheric data assimilation because they spread partial observational information across space, variables, and dynamically coupled scales. Ensemble and variational methods exploit this covariance geometry efficiently, but their standard analysis formulations are largely built around Gaussian or locally quadratic approximations. Score-based ensemble filtering provides a framework for nonlinear distributional transport, but existing Ensemble Score Filter (EnSF) formulations lack an intrinsic covariance-mediated pathway for propagating likelihood information from observed to unobserved state components. We introduce a covariance-informed ensemble score filter (CI-EnSF) that embeds localized forecast-error covariance geometry directly into the forward diffusion and reverse transport. The proposed forward diffusion is covariance-shaped in standardized state space and becomes isotropic under the corresponding control-variable transformation. This covariance structure continuously propagates observational information from observed to unobserved state components throughout the reverse transport analysis trajectory. Experiments with Lorenz-96 and surface quasi-geostrophic (SQG) dynamics show a clear regime dependence. For linear observations, a well-tuned LETKF is more accurate, while CI-EnSF maintains stable cycling and effective covariance-mediated information propagation. Under strongly nonlinear observations and under climatological initialization, CI-EnSF achieves lower analysis error and greater cycling robustness than Gaussian ensemble benchmarks such as the LETKF, with improvements extending across spatial scales in the nonlinear SQG experiment. These results suggest that the principal benefit of CI-EnSF arises from combining nonlinear distributional transport with the mature covariance geometry used in conventional data assimilation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Background-error covariance models are central to atmospheric data assimilation because they spread partial observational information across space, variables, and dynamically coupled scales.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Finite-horizon maintenance under geometric-process models: Quantifying model and decision uncertainty</div>
+<div class="meta-line">Authors: Wenhui Wu, Bingxing Wang, Wei Wang, Piao Chen</div>
+<div class="meta-line">First: 2026-10-23T03:20:40+00:00 · Latest: 2026-10-23T03:20:40+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32108v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32108v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Geometric process (GP) models are widely used for repairable systems whose inter-failure times evolve over successive failure-repair cycles. Maintenance decisions under GP models are often made with limited failure data and are subject to uncertainty in baseline selection and the resulting maintenance decision. Existing approaches typically rely on model ranking and plug-in estimates, which can understate uncertainty surrounding next-cycle replacement decisions. This paper develops a unified generalized-inference framework for finite-horizon, event-driven maintenance decision making under GP models. The proposed framework quantifies uncertainty in GP model parameters, cycle-specific reliability, hazard rate, one-cycle cost rate, and the associated optimal replacement time. For exponential and gamma baselines, the framework yields generalized confidence intervals through generalized pivotal quantities. For the Weibull baseline, it is implemented through a generalized fiducial approach. It also extends to a finite-sample discrimination procedure for quantifying baseline-selection uncertainty. Theoretical results establish the asymptotic validity of the proposed procedures and their interval estimates. Simulation study shows reliable finite-sample coverage for model parameters and nonlinear maintenance-relevant quantities, and satisfactory discrimination performance. A case study on aircraft air-conditioning failures shows that, in early cycles, replacement schedules with similar expected cost can imply materially different risk profiles, so a single plug-in recommendation may be misleading.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Geometric process (GP) models are widely used for repairable systems whose inter-failure times evolve over successive failure-repair cycles.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Statisticians Can Also Be AI Engineers, What Could We Build?</div>
+<div class="meta-line">Authors: Ruoqing Zhu</div>
+<div class="meta-line">First: 2026-10-23T03:09:01+00:00 · Latest: 2026-10-23T03:09:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32105v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.32105v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Statistical software makes methods widely available. Good statistical work, however, often requires conversations that clarify the scientific question, how the data were collected, and what conclusions the evidence can support. Coding agents and reusable AI infrastructure create opportunities for statisticians to incorporate these processes into agentic tools for research, practice, and education. A review of agentic AI applications for data analysis and study design distinguishes general human participation from human interaction guided by statistical principles. We examine how statistical expertise can guide the design and evaluation of domain-specific interactive harnesses. Two practical entry points illustrate how statisticians can begin building: an implemented causal-consulting skill within an existing agent environment and Model Forge, a custom harness for interactive model and algorithm development. These design examples connect statistical principles to choices about context, memory, tools, and interfaces, and motivate evaluation of both computational correctness and the scientific consequences of interaction. We conclude with a broader interdisciplinary research agenda on adaptive human-agent interaction, including selective information acquisition, evolving user preferences, and evaluation under uncertainty.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Statistical software makes methods widely available.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GeoAgent: Contract-Constrained LLM Agents for Seismic Data Processing</div>
+<div class="meta-line">Authors: Zhilong Fang, Qi Zhang, Jujie Yan, Zhong Wang, Xinbin Gu, Ziyang Zhang, Hua Wang</div>
+<div class="meta-line">First: 2026-10-22T11:07:12+00:00 · Latest: 2026-10-23T03:07:51+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31096v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31096v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models (LLMs) can drive scientific software through function calling, but free-form tool use is fragile on long, data-dependent processing chains. Models omit arguments, invent units, feed the previous artifact into the wrong input, and report completion without a verifiable product. We present GeoAgent, an agent system for seismic data processing built on Madagascar&#x27;s roughly 1{,}965 command-line programs. GeoAgent exposes 54 operator agents (51 generated from a declarative specification), retrieves from an index of 1{,}937 operators, and encodes the processing flow as a nine-stage state graph. Four explicit contracts---named artifacts, input resolution, parameter takeover, and artifact validation---move everything the graph can determine out of the model&#x27;s discretion. A deterministic geometry tool parses the self-describing SPS/RPS/XPS and SEG-Y headers, cross-checks eight consistency conditions, and reproduces the reference shell recipe exactly. The system runs in containers with session- and task-level isolation, bounded execution, and defenses against silent failures. On a 2-D land dataset, the nine-stage pipeline completes in about six to eleven minutes and yields a verified artifact at every stage, while retrieval reduces per-turn tool context from about 12k to 2k tokens. We report the design, deployment experience, and motivating failure modes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models (LLMs) can drive scientific software through function calling, but free-form tool use is fragile on long, data-dependent processing chains.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian ACCESS for Understanding Latent Epidemic Trajectories from Publicly Released Suppressed Data: Application to U.S. Opioid-related Overdose Mortality</div>
+<div class="meta-line">Authors: Jiahao Cao, Kehe Zhang, Cici Bauer</div>
+<div class="meta-line">First: 2026-08-10T04:18:46+00:00 · Latest: 2026-10-23T01:59:06+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.09103v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.09103v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Publicly released health statistics play a central role in characterizing temporal trends and identifying structural changes in population health. However, disclosure limitation through suppression of small cell counts, as implemented in systems such as the Centers for Disease Control and Prevention Wide-ranging ONline Data for Epidemiologic Research (CDC WONDER), produces partially observed count data that complicate statistical inference. These challenges are particularly acute for rare outcomes and subgroup analyses, where suppression is widespread and varies across geographic regions, demographic populations, and time. We propose Bayesian ACCESS (Autoregressive Change-point and Clustering Estimation for Suppressed Count Series), a Bayesian hierarchical framework for inference on latent epidemic trajectories and their structural changes from disclosure-limited health statistics. The proposed model directly represents suppressed count data through a suppression-aware observation model, jointly infers multiple temporal change points and latent trajectories, and borrows information across related geographic and demographic populations while preserving meaningful heterogeneity. We apply Bayesian ACCESS to opioid-related overdose mortality data from CDC WONDER for U.S. states from 1999 to 2024. The analysis identifies distinct subgroup-specific epidemic trajectories and structural changes that would be difficult to characterize using publicly released health statistics without explicitly accounting for data suppression and efficiently borrowing information across subgroups.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Publicly released health statistics play a central role in characterizing temporal trends and identifying structural changes in population health.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Softly Symbolifying Kolmogorov-Arnold Networks</div>
+<div class="meta-line">Authors: James Bagrow, Josh Bongard</div>
+<div class="meta-line">First: 2025-11-27T07:03:38+00:00 · Latest: 2026-10-22T23:43:55+00:00</div>
+<div class="meta-line">Comments: 39 pages with appendices, 10 figures, 15 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.07875v2">Abs</a> · <a href="https://arxiv.org/pdf/2512.07875v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Kolmogorov--Arnold Networks (KANs) offer a promising path toward interpretable machine learning: their learnable activations can be studied individually while collectively fitting complex data accurately. In practice, however, trained activations often lack *symbolic fidelity*, learning pathological decompositions with no meaningful correspondence to interpretable forms. We propose Softly Symbolified Kolmogorov--Arnold Networks (S2KAN), which integrate symbolic primitives directly into training. Each activation draws from a dictionary of symbolic and dense terms, with learnable gates that sparsify the representation. Crucially, this sparsification is differentiable, enabling end-to-end optimization, and uses an optimization objective inspired by minimum description length. S2KAN can discover interpretable activation functions while retaining dense splines for flexible approximation. We introduce a quantitative measure of symbolic fidelity, assessing how closely learned activations can be approximated by short expressions from a specified symbolic language. Across real-world prediction tasks, dynamical-system forecasting, and synthetic symbolic benchmarks, S2KAN generally achieves higher symbolic fidelity and often far smaller models, while maintaining competitive predictive accuracy on real-world data and low prediction errors on most symbolic benchmark configurations. We also examine the models&#x27; learned responses on scientific data, including the contributions of their symbolic components. Together, these results show that incorporating symbolic structure during training can yield compact, accurate KAN models whose learned responses can be examined through their symbolic components.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Kolmogorov--Arnold Networks (KANs) offer a promising path toward interpretable machine learning: their learnable activations can be studied individually while collectively fitting complex data accurately.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Proportion Outcomes in Interrupted Time Series Analysis: Why Both Boundedness and Autocorrelation Matter</div>
+<div class="meta-line">Authors: Ariel Linden</div>
+<div class="meta-line">First: 2026-10-22T22:19:04+00:00 · Latest: 2026-10-22T22:19:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31969v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31969v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Background: Proportions are common in interrupted time series analysis (ITSA), but bounded outcomes and serial dependence require distinct modeling considerations. This article provides guidance on selecting and evaluating models for proportion outcomes.
+  Methods: Two published healthcare ITSA studies were reanalyzed. The first examined weekly proportions near the boundaries of the unit interval using segmented linear regression. The second examined monthly proportions without reported assessment or adjustment for autocorrelation. Both were reanalyzed using models appropriate for their outcome distributions and temporal dependence.
+  Results: In the first study, segmented linear regression produced six fitted values below zero, and 35 of 66 confidence intervals extended beyond the permissible outcome range. Fractional logistic regression constrained fitted means to the unit interval while accommodating zeros and ones. In the second study, beta autoregressive regression identified significant first-order serial dependence (rho1 = 0.263, 95% CI 0.093 to 0.432; P = .002). After adjustment, residuals showed no evidence of remaining autocorrelation (Ljung-Box Q12 = 15.59; P = .211).
+  Conclusions: Boundedness and serial dependence are distinct considerations in ITSA of proportions. Accounting for autocorrelation does not ensure predictions remain within the permissible range, and modeling bounded outcomes does not ensure serial dependence is addressed. Investigators should assess both features and select models appropriate for the outcome distribution and temporal dependence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Background: Proportions are common in interrupted time series analysis (ITSA), but bounded outcomes and serial dependence require distinct modeling considerations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Sub-monolayer tracking of molecular states at buried interfaces</div>
+<div class="meta-line">Authors: Harlan Heilman, Em Biegler, Sushil Adhikari, Victor Murcia, Tanner Melody, Fred Woodall, Lars Thomsen, Obaid Alqahtani, Brian A. Collins</div>
+<div class="meta-line">First: 2026-10-22T21:17:05+00:00 · Latest: 2026-10-22T21:17:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31924v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31924v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Phenomena responsible for emerging technologies originate from novel molecular states at buried interfaces. Yet quantitatively resolving these features is out of reach in most cases. Resonant scattering has demonstrated sensitivity to these local states but is limited due to a lack of accurate interpretive models. We leverage a machine learning (ML)-optimized optical model to analyze polarized resonant soft X-ray scattering (RSoXS) from molecular thin films. This new analysis establishes the direct and quantitative interpretation of molecular orientation, chemical identity and packing states as a function of depth with sub-monolayer resolution - reaching beyond the diffraction limit via locking energy and polarization through the optical model. From our analysis, we discover a gradient evolution of molecular orientation and packing emerging from the interface, indicative of competing surface versus bulk growth dynamics and contradicting hypotheses of substrate patterning. This nondestructive insight into buried interfacial formation and final state opens possibilities in controlling interfacial states and phenomena in next-generation technologies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Phenomena responsible for emerging technologies originate from novel molecular states at buried interfaces.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian Propensity Score Predictive Inference for Extending Trial Findings to Target Populations</div>
+<div class="meta-line">Authors: Jungang Zou, Joseph E. Schwartz, Roderick J. A. Little, Nathalie Moise, Qixuan Chen</div>
+<div class="meta-line">First: 2026-10-22T21:08:45+00:00 · Latest: 2026-10-22T21:08:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31915v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31915v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The CODIACS Vanguard randomized trial compared a depression care intervention with usual care for patients with persistent depressive symptoms following acute coronary syndrome. We assess whether its findings can be extended to broader patient populations represented by two cohorts constructed from the All of Us electronic health records. This extension is challenging when treatment effects vary across covariates whose distributions differ between trial and target populations. We develop Bayesian Propensity Score Predictive Inference (PSPI), an interaction-based outcome modeling framework that combines Bayesian additive regression trees for potentially high-dimensional covariates with natural cubic splines of the sampling propensity score. Two variants include a separate spline in the treatment effect component alone or in both the prognostic and treatment effect components. The spline components allow separate regularization of selection-related variation and thus improve potential outcome estimation within the observed range and allow an explicit extrapolation rule beyond their boundary knots under substantial covariate shift. An inverse Gumbel transformation of the sampling propensity score balances compression near zero and the extent of extrapolation. Simulation studies show that spline-based PSPI models outperform competing methods in the settings studied, achieving lower root mean squared errors and near-nominal coverage, particularly under substantial covariate shift. In the application, PSPI estimates larger intervention benefits in both target populations than the unadjusted trial estimate.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The CODIACS Vanguard randomized trial compared a depression care intervention with usual care for patients with persistent depressive symptoms following acute coronary syndrome.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Self-similar Worthington jets</div>
+<div class="meta-line">Authors: José M. Gordillo, Javier Rodríguez-Rodríguez, Vatsal Sanjay</div>
+<div class="meta-line">First: 2026-07-09T22:29:55+00:00 · Latest: 2026-10-22T20:11:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.08972v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.08972v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When a micron-sized bubble bursts, capillary waves deform the cavity into a cone that ejects a Worthington jet. The jet is born by inertial focusing, and the local collapse follows self-similar Euler solutions set by the semiangle $β$. Writing $r_j$ and $v_j$ for the dimensionless jet-base radius and velocity, the local Weber number $We_j=r_j v^2_j$ measures inertia relative to capillarity. The theory, supported by accurate numerical simulations gives $r_j\proptoτ^{α(β)}$ with $α\simeq0.63$ and, hence $We_j\gg1$, with $We_j\to\infty$ as $r_j\to0$, so inertia increasingly overwhelms capillarity. In simulations, the interface collapses onto a universal shape for more than two decades in dimensionless time when lengths are scaled using our prediction for $r_j$. For water, this gives incipient radii of $\mathcal{O}(1)$ nm, predicting nanometric sea-spray aerosols.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When a micron-sized bubble bursts, capillary waves deform the cavity into a cone that ejects a Worthington jet.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Universal Inference for Testing Calibration and Specification of Mean Estimates within the Exponential Dispersion Family</div>
+<div class="meta-line">Authors: Łukasz Delong, Mario Wüthrich</div>
+<div class="meta-line">First: 2025-10-27T20:02:51+00:00 · Latest: 2026-10-22T19:46:03+00:00</div>
+<div class="meta-line">Comments: 65 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.23821v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.23821v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Calibration of mean estimates is a crucial property in many applications, particularly in actuarial decision-making. Tests of mean-calibration are often performed under the assumption that the estimated means correctly preserve the ordering of the corresponding population means. In this paper, we first consider the classical Likelihood Ratio Test (LRT) within the Exponential Dispersion Family (EDF), and we show that applying likelihood-based methods to test mean-calibration within the EDF requires a strong ordering assumption on the mean estimates. This assumption makes the null hypothesis of the mean-calibration test equivalent to the correct specification of the mean estimates. Next, we investigate the framework of universal inference for testing mean-calibration and mean-specification, and the relationship between the tests. We develop a sub-sampled split LRT within the EDF that provides finite-sample guarantees with universally valid critical values. We investigate type I error, power, and e-power of the sub-sampled split LRT and compare its performance with that of the classical LRT. We also propose a novel test statistic based on a sub-sampled split $L_q$-likelihood ratio test (L$q$RT) to enhance the performance of the statistical test. Numerical results demonstrate that universal inference based on the sub-sampled split LRT and sub-sampled split L$q$RT provides an attractive alternative to the classical LRT within the EDF, achieving high power for detecting miscalibration and misspecification in medium- and large-sized samples.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Calibration of mean estimates is a crucial property in many applications, particularly in actuarial decision-making.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0547.html">20261024_0547</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0512.html">20261019_0512</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0551.html">20261017_0551</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0659.html">20261010_0659</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0726.html">20261008_0726</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0555.html">20261004_0555</a>
+<a href="archive/20261003_0646.html">20261003_0646</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0545.html">20260928_0545</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0555.html">20260926_0555</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0623.html">20260922_0623</a>
+<a href="archive/20260921_0508.html">20260921_0508</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0550.html">20260918_0550</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0524.html">20260910_0524</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0524.html">20260830_0524</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0320.html">20260820_0320</a>
+<a href="archive/20260819_0322.html">20260819_0322</a>
+<a href="archive/20260818_0321.html">20260818_0321</a>
+<a href="archive/20260817_0315.html">20260817_0315</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0352.html">20260814_0352</a>
+<a href="archive/20260813_0356.html">20260813_0356</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0421.html">20260806_0421</a>
+<a href="archive/20260805_0419.html">20260805_0419</a>
+<a href="archive/20260804_0421.html">20260804_0421</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0412.html">20260731_0412</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0415.html">20260728_0415</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0412.html">20260725_0412</a>
+<a href="archive/20260724_0408.html">20260724_0408</a>
+<a href="archive/20260723_0408.html">20260723_0408</a>
+<a href="archive/20260722_0415.html">20260722_0415</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0400.html">20260718_0400</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0406.html">20260715_0406</a>
+<a href="archive/20260714_0407.html">20260714_0407</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0443.html">20260710_0443</a>
+<a href="archive/20260709_0417.html">20260709_0417</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0448.html">20260707_0448</a>
+<a href="archive/20260706_0407.html">20260706_0407</a>
+<a href="archive/20260705_0406.html">20260705_0406</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0415.html">20260703_0415</a>
+<a href="archive/20260702_0446.html">20260702_0446</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_1045.html">20260630_1045</a>
+<a href="archive/20260630_1021.html">20260630_1021</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
