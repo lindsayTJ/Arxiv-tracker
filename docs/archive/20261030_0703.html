@@ -1,0 +1,905 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-30 07:03</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261030_0703</div>
+    <div class="row"><div class="card">
+<div class="title">Detailed balance in large language model-driven agents</div>
+<div class="meta-line">Authors: Zhuo-Yang Song, Qing-Hong Cao, Ming-xing Luo, Hua Xing Zhu</div>
+<div class="meta-line">First: 2025-12-10T20:04:23+00:00 · Latest: 2026-10-27T17:34:10+00:00</div>
+<div class="meta-line">Comments: 24 pages, 19 figures, 7 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.10047v2">Abs</a> · <a href="https://arxiv.org/pdf/2512.10047v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language model (LLM)-driven agents are emerging as a powerful new paradigm for solving complex problems. Despite the empirical success of these practices, a theoretical framework to understand and unify their macroscopic dynamics remains lacking. This paper proposes a method based on the least action principle to estimate the underlying generative directionality of LLMs embedded within agents. By experimentally measuring the transition probabilities between LLM-generated states, we report evidence consistent with a tendency toward detailed balance in LLM-generated transitions, indicating that LLM generation may not be achieved by generally learning rule sets and strategies, but rather by implicitly learning a class of underlying potential functions that may transcend different LLM architectures and prompt templates. To our knowledge, this provides an effective macroscopic description of LLM generative dynamics that does not depend on specific model details. This work is an attempt to establish a macroscopic dynamics theory of complex AI systems, aiming to elevate the study of AI agents from a collection of engineering practices to a science built on effective measurements that are predictable and quantifiable.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language model (LLM)-driven agents are emerging as a powerful new paradigm for solving complex problems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Practical Guidelines for Goodness-of-Fit Testing for Right-Censored Data</div>
+<div class="meta-line">Authors: Arnau Gómez-Català, Guadalupe Gómez Melis, Klaus Langohr</div>
+<div class="meta-line">First: 2026-10-27T16:35:56+00:00 · Latest: 2026-10-27T16:35:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37513v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37513v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In survival studies, right censoring often prevents the observation of subjects&#x27; complete outcomes, complicating inference about the underlying distribution. Evaluating whether a given distribution adequately fits right-censored data is therefore essential. However, guidance on the relative performance of available goodness-of-fit tests under different data conditions remains limited.
+  In this work, we present a comparative assessment of three classical goodness-of-fit tests adapted for right-censored data: Kolmogorov-Smirnov, Anderson-Darling, and Cramér-von Mises. Through an extensive simulation study, we investigate how factors such as the proportion of right-censored observations, sample size, and distributional symmetry influence the statistical power of each test.
+  All procedures were implemented using the R package GofCens, and power estimates were obtained from extensive replicated simulations. The results identify the settings in which each test exhibits superior performance, providing practical, evidence-based recommendations for test selection in survival analysis. These recommendations are summarized as user-oriented guidelines and complemented by a concise graphical cheat sheet, enabling practitioners to quickly identify the most suitable test for their specific application.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In survival studies, right censoring often prevents the observation of subjects&#x27; complete outcomes, complicating inference about the underlying distribution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian local clustering of age-period mortality surfaces across multiple countries</div>
+<div class="meta-line">Authors: Giovanni Romanò, Emanuele Aliverti, Daniele Durante</div>
+<div class="meta-line">First: 2025-04-07T16:23:19+00:00 · Latest: 2026-10-27T16:20:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2504.05240v2">Abs</a> · <a href="https://arxiv.org/pdf/2504.05240v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Although traditional literature on mortality modeling has focused on single countries in isolation, recent contributions have progressively moved toward joint statistical models for multiple countries. Besides favoring borrowing of information to improve age-period forecasts, this perspective has also potential to infer local similarities among countries&#x27; mortality patterns within specific age classes and periods that could unveil unexplored demographic trends, while guiding the design of targeted policies. Advancements along this direction are currently undermined by the lack of a multi-country model capable of incorporating the core structures of age-period mortality surfaces together with clustering patterns among countries that are not global, but rather vary locally across the different combinations of age classes and periods. We cover this gap by developing a novel Bayesian model for log-mortality rates that characterizes the age structure of mortality through a B-spline expansion whose country-specific dynamic coefficients encode both changes of this age structure across periods and also local clustering patterns among countries under a time-dependent random partition prior for these country-specific dynamic coefficients. While flexible, this formulation facilitates tractable posterior inference leveraging a suitably designed Gibbs sampler. The application to mortality data from 14 countries unveils local similarities which highlight both previously recognized demographic phenomena and also yet unexplored patterns.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Although traditional literature on mortality modeling has focused on single countries in isolation, recent contributions have progressively moved toward joint statistical models for multiple countries.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Input Skip Can Reparameterize a VAE Without Improving the Generator</div>
+<div class="meta-line">Authors: Kevin Lee</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-27T15:57:37+00:00 · Latest: 2026-10-27T15:57:37+00:00</div>
+<div class="meta-line">Comments: Accepted at NeurIPS 2026 Principles of Generative Modeling (PriGM) Workshop. Available at: https://github.com/magnaprog/vae-skip-reparam</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37456v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37456v1">PDF</a> · <a href="https://github.com/magnaprog/vae-skip-reparam">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">An input skip can reduce reconstruction error while leaving a model&#x27;s distribution of new samples unchanged. For a Gaussian variational autoencoder (VAE) with constant input skip $0\leqα&lt;1$, a model without a skip can be written in skip form by multiplying its decoder output by $b=1-α$ and its noise variance by $b^2$. The distribution of observations and latent variables and its exact generative scores stay the same, while reconstruction mean squared error (MSE) is multiplied by $b^2$. Separate training can produce different generators because optimization depends on the parameter coordinates. In a Gaussian experiment with known density, changing skip and observation variance together reduces MSE but worsens energy score and the estimate of negative log density from importance sampling. On seven annual Deep-ocean Assessment and Reporting of Tsunamis (DART) records, energy score differences at the same observation variance have both signs on four original records and favor the skip on three records from 2018. Probabilistic principal component analysis (PPCA) has lower mean energy scores than every neural DART fit. With the encoder and decoder kept the same, estimating observation variance from training reconstruction error can also worsen energy score. Assessing generation requires more than reconstruction error.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">An input skip can reduce reconstruction error while leaving a model&#x27;s distribution of new samples unchanged.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Expert-Guided Class-Conditional Goodness-of-Fit Scores for Interpretable Classification with Informative Missingness</div>
+<div class="meta-line">Authors: Shahar Cohen, David M. Steinberg, Yael Radzyner, Yochai Ben Horin</div>
+<div class="meta-line">First: 2026-04-16T09:31:37+00:00 · Latest: 2026-10-27T15:36:23+00:00</div>
+<div class="meta-line">Comments: 28 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.14809v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.14809v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study a classification problem with three key challenges: pervasive informative missingness, the integration of partial prior expert knowledge into the learning process, and the need for interpretable decision rules. We propose a framework that encodes prior knowledge through an expert-guided class-conditional model for one or more classes, and use this model to construct a small set of interpretable goodness-of-fit features. The features quantify how well the observed data agree with the expert model, isolating the contributions of different aspects of the data, including both observed and missing components. These features are combined with a few transparent auxiliary summaries in a simple discriminative classifier, resulting in a decision rule that is easy to inspect and justify. We develop and apply the framework in the context of seismic monitoring used to assess compliance with the Comprehensive Nuclear-Test-Ban Treaty. We show that the method has strong potential as a transparent screening tool, reducing workload for expert analysts. A simulation designed to isolate the contribution of the proposed framework shows that this interpretable expert-guided method can even outperform strong standard machine-learning classifiers, particularly when training samples are small.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study a classification problem with three key challenges: pervasive informative missingness, the integration of partial prior expert knowledge into the learning process, and the need for interpretable decision rules.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian Ordinal Analysis of Cereal Growth Stage Data from Oat Trials in Western Australia</div>
+<div class="meta-line">Authors: Zhanglong Cao, Rose Megirian, Matthew Nguyen, Adam H. Sparks</div>
+<div class="meta-line">First: 2026-10-27T15:10:41+00:00 · Latest: 2026-10-27T15:10:41+00:00</div>
+<div class="meta-line">Comments: 34 pages, 7 figures, 5 tables; supplementary material with 5 figures and 12 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37384v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37384v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Growth stage in cereal field trials is usually scored on the Zadoks decimal scale. The score is ordinal, yet it is often analysed as if it were continuous, which can lead to misleading conclusions. Ordinal analysis of growth stage data has received little attention from biometricians or agronomists, and it is not straightforward when several plants are scored in each plot of a split-plot design. We analysed Zadoks scores recorded four weeks after sowing on ten plants per plot in two deep-sowing oat trials in Western Australia, using a Bayesian hierarchical ordinal model that carries the full split-plot structure and an AR1 x AR1 spatial covariance. The implementation was validated on simulated data, and the candidate models were compared by five-fold cross-validation over plots. Adding a random effect at the experimental-unit (plot) level changed the uncertainty of the sub-plot contrasts substantially, while the main-plot contrasts changed little. How that plot-level heterogeneity was modelled mattered much less. At either site, cross-validation could not separate the candidate models that carried a plot-level term, whether or not they included an AR1 x AR1 field or the blocking terms, and the autoregressive parameters were only weakly identified on this layout. Deeper sowing (80 and 120 mm against 30 mm) went with more advanced development at four weeks in both trials. Sowing at 120 mm rather than 30 mm raised the predicted probability of tillering from 0.04 to 0.24 at Wickepin and from 0.04 to 0.10 at Merredin. The depth effects were stable whether or not the spatial field was fitted, and under both the cumulative and the sequential ordinal family.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Growth stage in cereal field trials is usually scored on the Zadoks decimal scale.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Spatial Colorimetric Mapping of pH and Dissolved Carbon during Convective Dissolution of CO{\_2}: Constraints from Domain, Geometry, and Indicator Mix on Measurement Reliability</div>
+<div class="meta-line">Authors: Joe-sam Nkuah, Vance Sisson, Haochen Li, Anna Herring</div>
+<div class="meta-line">First: 2026-10-27T14:41:54+00:00 · Latest: 2026-10-27T14:41:54+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37335v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37335v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Quantifying the dissolution and buoyancy-driven transport of CO2-rich water is critical to understanding solubility trapping mechanism in geologic storage. Analog-fluid density driven convection experiments do not represent CO2 dissolution chemistry or the aqueous CO2 density-concentration monotonic relationship. X-ray tomography does not provide enough contrast to directly measure dissolved CO2. Spatial colorimetry provides an inexpensive method to map pH and estimate total dissolved inorganic carbon (CT) via carbonate equilibrium assumptions. However, the effects of experimental conditions such as domain (free fluid and porous), geometry (2D and 3D), and indicator mix concentration on the reliability of pH and CT measurements remain unexplored. We evaluated how these factors affect the reliability of measurements using two different colorimetric models (hue and spherical coordinates (θ and φ)). Hue was reliable in all domains whereas θ-φ was reliable in free fluid. Lower indicator mix concentration increased the chromatic sensitivity at low pH in free fluid; however, it did not produce sufficient color contrast for pH calibration and mapping in the porous domain. In the porous domain, θ-φ calibration was 33 times more susceptible to noise than hue. Temporal pH noise was less than 0.01 units; spatial noise changed domain-mean CT by 0.6-4.4{\%}. Both models were able to resolve CO2-rich plumes in free fluid; however, θ-φ had sharper plume boundaries than hue. The temporal evolution of CO2 dissolution resolved by the color models agreed more in 2D than 3D. These findings provide a reliability framework for studying subsurface dissolution and mixing of CO2.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Quantifying the dissolution and buoyancy-driven transport of CO2-rich water is critical to understanding solubility trapping mechanism in geologic storage.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scale-aware and spatially-localised optimisation of kilometre-scale MLWP models</div>
+<div class="meta-line">Authors: James Chappell, Sophie Luise Arana, Jack Bowyer, Alejandro Coca-Castro, Evangeline Corcoran, Eric G. Daub, Tom Dunstan, Noushin Eftekhari, Anna-Louise Ellis, J. Scott Hosking, Manvendra Janmaijaya, David Salvador-Jasin, Ben Shipway, Nathan Simpson, Oliver Strickson, David Walters</div>
+<div class="meta-line">First: 2026-10-27T14:35:19+00:00 · Latest: 2026-10-27T14:35:19+00:00</div>
+<div class="meta-line">Comments: 21 pages, 12 figures (including appendix)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37325v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37325v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Preserving fine-scale structure without degrading spatial accuracy is a central challenge for kilometre-scale machine-learning weather prediction (MLWP). We introduce a loss based on the dual-tree complex wavelet transform that constrains atmospheric fields jointly by scale, location, and orientation. We evaluate its performance using an experimental joint global--regional FastNet configuration, which produces \SI{1.5}{km} forecasts over the UK alongside $\sim$\SI{31}{km} global forecasts. Relative to both mean-squared error (MSE) and an FFT-based spectral objective, the wavelet loss substantially improves spectral fidelity. Compared with MSE training, it maintains similar pointwise performance, improves neighbourhood-based verification, and produces sharper precipitation fields with more realistic intensity distributions. These results demonstrate that spatially localised wavelet constraints can preserve multiscale atmospheric structure while largely avoiding the loss of pointwise accuracy associated with globally supported spectral objectives.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Preserving fine-scale structure without degrading spatial accuracy is a central challenge for kilometre-scale machine-learning weather prediction (MLWP).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Climate change, sea level rise, and the agricultural revolution</div>
+<div class="meta-line">Authors: Ridhika Mishra, Richard S. J. Tol</div>
+<div class="meta-line">First: 2026-10-27T14:26:11+00:00 · Latest: 2026-10-27T14:26:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37306v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37306v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We test various hypotheses for the invention and spread of agriculture: higher temperatures, increased seasonality, carbon dioxide fertilization, sea level rise, and technological progress on the extensive margin. We successfully replicate Matranga (QJE 2024). His seasonality hypothesis survives alternative data, estimators, and competing hypotheses. Population density played a role in the invention of agriculture, while spatial diffusion was important for its spread. Sea level rise and climate change had a minor effect on the population density of the areas that first adopted agriculture. Extrapolating a logit model for the invention of agriculture, some now-submerged areas in the Persian Gulf, Mediterranean, and Yellow Sea were suitable for early agriculture. Over time, technological progress was the main factor in extending agriculture&#x27;s extensive margin.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We test various hypotheses for the invention and spread of agriculture: higher temperatures, increased seasonality, carbon dioxide fertilization, sea level rise, and technological progress on the extensive margin.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Elementwise Adaptive Random Search for High-Dimensional Constrained Continuous Global Optimization</div>
+<div class="meta-line">Authors: Pierre Jean-Claude Robert Bertrand, Michel Broniatowski, Wolfgang Stummer</div>
+<div class="meta-line">First: 2025-03-31T09:11:34+00:00 · Latest: 2026-10-27T14:14:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2503.23864v4">Abs</a> · <a href="https://arxiv.org/pdf/2503.23864v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose a new stochastic method for high-dimensional constrained continuous global optimization without convexity assumptions. The algorithm combines global exploration and local refinement through coordinate-wise adaptive perturbations, whose scale is proportional to the current iterate. We show that global exploration reaches any feasible region with positive probability, while local search benefits from strong concentration properties, enabling efficient decline near optima. Their combination yields convergence to a global minimizer under mild regularity conditions. Applications to LASSO sparsity improvement as well as similar BPDN (Basis Pursuit DeNoising) problems, and to neural network pruning, illustrate the practical effectiveness of the approach.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We propose a new stochastic method for high-dimensional constrained continuous global optimization without convexity assumptions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Personal preference or system role? Battery swapping among UK electric vehicle users</div>
+<div class="meta-line">Authors: Janak Parmar, Huseyin Ayan, Dilum Dissanayake, Margaret Bell</div>
+<div class="meta-line">First: 2026-10-27T14:02:09+00:00 · Latest: 2026-10-27T14:02:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37269v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37269v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Battery swapping replaces a depleted EV battery with a charged one, reducing waiting time and enabling off-peak charging. Evidence on acceptance, however, remains concentrated in Asian markets, and most studies examine individual adoption intentions. This study asks whether current UK EV users judge swapping differently as a purchase option and as a technology for the transport system. Using Behavioural Reasoning Theory, an integrated choice and latent variable model, and latent class analysis, we analyse perceived usefulness, energy-system concerns, practical barriers, and satisfaction with current charging. Usefulness and energy-system concerns relate more strongly to expectations about the system. Battery compatibility and station coverage relate more strongly to personal preference, while spare battery costs relate to expectations about network viability. User groups differ in how they balance benefits, barriers, and satisfaction with existing charging. Policy should address driver barriers and network viability as distinct but connected priorities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Battery swapping replaces a depleted EV battery with a charged one, reducing waiting time and enabling off-peak charging.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Penalized Cause-Specific Hazard Regression under Competing Risks: An Elastic Net Approach Using SANAD Trial Data</div>
+<div class="meta-line">Authors: Avinash Kumar</div>
+<div class="meta-line">First: 2026-10-27T13:41:36+00:00 · Latest: 2026-10-27T13:41:36+00:00</div>
+<div class="meta-line">Comments: 15 Pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37235v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37235v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Competing risks analysis is an important framework for studying time-to-event data in the presence of multiple, mutually exclusive events. Traditional methods, such as non-parametric estimators and proportional hazards models, may not adequately capture complex hazard patterns or provide stable estimates in practical settings. In this study, we propose a parametric approach based on the generalized exponential regression model for competing risks data. The model allows flexible hazard shapes and incorporates covariate effects through a regression structure. To improve estimation stability, we integrate elastic net regularization into the likelihood framework. The proposed method is evaluated through simulation studies and applied to a real dataset. The results indicate that the elastic net approach provides more stable and precise estimates compared to standard maximum likelihood estimation. Overall, the proposed framework offers a flexible and practical approach for analyzing competing risks data.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Competing risks analysis is an important framework for studying time-to-event data in the presence of multiple, mutually exclusive events.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Application of Geometric Riemannian Pricing Algorithm for Valuing Catastrophe Bonds in Incomplete Markets: Market-Consistent Financial Entropy and the Split of Frequency and Severity Risk Premia</div>
+<div class="meta-line">Authors: Saeid Safarveisi</div>
+<div class="meta-line">First: 2026-10-27T12:58:01+00:00 · Latest: 2026-10-27T12:58:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37171v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37171v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper presents a framework for pricing catastrophe (CAT) bonds in incomplete markets through Riemannian geometric optimization of financial entropy. We formulate pricing-measure selection as a maximum financial entropy problem on a finite-dimensional manifold of equivalent measures, parameterized by the non-hedgeable market prices of catastrophe frequency and severity risk, with discounting fixed by the default-free term structure. Since unconstrained entropy maximization recovers the physical measure, we incorporate observed secondary-market spreads, both pooled and date by date. For a compound Poisson-generalized Pareto loss model with Wang distortion, we derive closed-form expressions for financial entropy and the Riemannian metric. We show that CAT bond prices depend on frequency and severity premia primarily through the risk-neutral trigger intensity, making the two premia unidentifiable from market data alone; the entropy criterion resolves this ambiguity. Using a hypothetical earthquake CAT bond calibrated to quarterly spreads of Golden State Re II Ltd. (Series 2014-1), we obtain risk-neutral trigger intensities of 6.58 to 10.45 times the physical intensity (9.20 pooled and 18.26 at the end of 2015). The model-implied risk multiple aligns with the market spread-to-expected-loss ratio (8.87 versus 8.81 at issuance). The minimal-entropy measure attributes 53.5% to 63.7% of the log risk multiple to frequency risk, reflecting the selection principle rather than market identification. Finally, equating the coupon with the quoted spread understates the risk multiple by approximately half.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper presents a framework for pricing catastrophe (CAT) bonds in incomplete markets through Riemannian geometric optimization of financial entropy.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Surveying exogenous species in Saturn with ALMA I. Detecting and Mapping CO</div>
+<div class="meta-line">Authors: Deborah Bardet, Thierry Fouchet, Thibault Cavalié, Raphaël Moreno, Emmanuel Lellouch, Camille Lefour, Bilal Benmahi, Sandrine Guerlet</div>
+<div class="meta-line">First: 2026-01-08T16:37:41+00:00 · Latest: 2026-10-27T12:04:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.05090v2">Abs</a> · <a href="https://arxiv.org/pdf/2601.05090v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The origin of carbon monoxide (CO) in Saturn&#x27;s stratosphere remains uncertain, with proposed sources including internal thermochemical production, cometary impacts, and exogenic material from the rings and icy moons (i.e. Enceladus). We aim to constrain the vertical and meridional distribution of stratospheric CO and assess the relative contributions of these potential sources. Here, we analysed high-spectral-resolution ALMA observations of the CO (J=3-2) line obtained on 25 May 2018, sampling Saturn&#x27;s limb from 20°S to 69°N. CO vertical profiles were retrieved using a line-by-line radiative transfer model combined with spectral inversion techniques, testing multiple prior scenarios representative of different source hypotheses. CO is confined to a narrow layer between 0.1 and 1 mbar, with a robust negative vertical gradient and mean abundances of (3.7+/- 0.8) x 10$^{-8}$ at 0.1 mbar and (7.2 +/- 0.9) x 10$^{-8}$ at 1 mbar. The meridional distribution is statistically homogeneous, with a marginal enhancement near 60° N plausibly related to Enceladus. No significant equatorial enhancement is detected. The absence of a strong equatorial enhancement rules out a long-lived steady source associated with ring infall. The observations are most consistent with a relatively recent ($\approx$200-year-old or younger) cometary impact whose material has since been horizontally mixed, while any Cassini Grand Finale ring influx was either too recent or inefficient to affect CO abundances at the probed pressure levels.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The origin of carbon monoxide (CO) in Saturn&#x27;s stratosphere remains uncertain, with proposed sources including internal thermochemical production, cometary impacts, and exogenic material from the rings and icy moons (i.e.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Is Your LLM Relay Serving What It Claims? A low-cost and high-power test for LLM Relay Auditing</div>
+<div class="meta-line">Authors: Fangran Miao, Shengjie Niu, Jian Huang, Ting Li</div>
+<div class="meta-line">First: 2026-10-27T11:49:21+00:00 · Latest: 2026-10-27T11:49:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37086v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37086v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Relay and reseller APIs have become a common way to access large language models (LLMs), yet users cannot directly verify whether they receive the models they request and pay for. This opacity motivates LLM relay auditing, but existing methods struggle to combine low cost, robustness to benign deployment changes, and statistically interpretable decisions under black-box access. To address these limitations, we propose distributional fingerprint auditing (DFA), a statistical method that requires only textual responses from suspect and trusted reference endpoints. DFA repeatedly queries semantically simple finite-choice probes and uses the resulting categorical response distributions to construct endpoint fingerprints. It compares the suspect and reference fingerprints probe by probe and aggregates the resulting evidence using the Cauchy combination test, yielding an approximate endpoint-level $p$-value for audit decisions at a prespecified nominal significance level. Using registered fingerprints of candidate models, a likelihood-based formulation further supports model attribution under full substitution and joint estimation of substitute identity and substitution ratio under constant-ratio mixed routing. Our benchmark includes 16 proprietary and open-weight LLMs from 10 model families. Across 240 ordered full-substitution pairs, DFA achieves high detection rates at a nominal significance level of $α=0.05$, using five probes and 250 relay requests per audit with stored reference fingerprints. Configuration overrides can lead to rejection even when the served model remains unchanged, with effects varying across models and configurations. Simulations based on stored empirical fingerprints demonstrate accurate model attribution and estimate substitution ratios, with estimation error decreasing as the audit budget increases.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Relay and reseller APIs have become a common way to access large language models (LLMs), yet users cannot directly verify whether they receive the models they request and pay for.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Analysis of Uncertain GARCH Model with the application of crude oil future prices</div>
+<div class="meta-line">Authors: Zhihong Yin, Zhiming Li</div>
+<div class="meta-line">First: 2026-10-27T11:35:32+00:00 · Latest: 2026-10-27T11:35:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37071v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37071v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time series data often exhibit variation, clustering, and persistence in uncertain environments. Based on an uncertain measure, existing studies have primarily focused on conditional mean structures while ignoring variance and persistent dynamics. To address this gap, this paper develops an uncertain generalized autoregressive conditional heteroskedasticity (UGARCH) model that incorporates lagged conditional variance terms. We first prove sufficient conditions to ensure mean stationarity of the variance process. Then, we propose recursive constrained least squares to estimate the model parameters and use cross validation to determine the orders of the mean and variance equations. In addition, we also employ uncertain hypothesis tests to determine whether a time series exhibits a UGARCH effect and to assess the goodness of fit. Point and interval forecasts are subsequently constructed from the recursively obtained next-period conditional variance and the expected value of the mean equation. Numerical simulations demonstrate the parameter estimation performance of the proposed method and show that UGARCH achieves smaller conditional-variance fitting errors than UARCH under the considered settings. In the empirical analysis, we apply the proposed method to West Texas Intermediate crude oil futures closing prices, which exhibit time-varying volatility and support short-term point and interval forecasts. Keywords: Uncertain measure, Uncertain time-series analysis, UGARCH model, hypothesis test</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time series data often exhibit variation, clustering, and persistence in uncertain environments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The dynamical memory of tidal stellar streams: Joint inference of the Galactic potential and the progenitor of GD-1 with flow matching</div>
+<div class="meta-line">Authors: Giuseppe Viterbo, Tobias Buck</div>
+<div class="meta-line">Venue: A&amp;A 707, A363 (2026)</div>
+<div class="meta-line">First: 2025-12-04T09:21:35+00:00 · Latest: 2026-10-27T11:35:12+00:00</div>
+<div class="meta-line">Comments: submitted to A&amp;A, comments welcome, all source code to reproduce this work can be found on GitHub under the url: https://github.com/vepe99/sbi-sim/tree/odisseo_branch . The simulator \textsc{\texttt{Odisseo}} is available on GitHub at the following url: https://github.com/vepe99/Odisseo</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.04600v2">Abs</a> · <a href="https://arxiv.org/pdf/2512.04600v2">PDF</a> · <a href="https://github.com/vepe99/sbi-sim/tree/odisseo_branch">Code1</a> · <a href="https://github.com/vepe99/Odisseo">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Stellar streams offer one of the most sensitive probes of the Milky Way`s gravitational potential, as their phase-space morphology encodes both the tidal field of the host galaxy and the internal structure of their progenitors. In this work, we introduce a framework that leverages Flow Matching and Simulation-Based Inference (SBI) to jointly infer the parameters of the GD-1 progenitor and the global properties of the Milky Way potential. Our aim is to move beyond traditional techniques (e.g. orbit-fitting and action-angle methods) by constructing a fully Bayesian, likelihood-free posterior over both host-galaxy parameters and progenitor properties, thereby capturing the intrinsic coupling between tidal stripping dynamics and the underlying potential. To achieve this, we generate a large suite of mock GD-1-like streams using our differentiable N-body code \textsc{\texttt{Odisseo}}, sampling self-consistent initial conditions from a Plummer sphere and evolving them in a flexible Milky Way potential model. We then apply conditional Flow Matching to learn the vector field that transports a base Gaussian distribution into the posterior, enabling efficient, amortized inference directly from stream phase-space data. We demonstrate that our method successfully recovers the true parameters of a fiducial GD-1 simulation, producing well-calibrated posteriors and accurately reproducing parameter degeneracies arising from progenitor-host interactions. Flow Matching provides a powerful, flexible framework for Galactic Archaeology. Our approach enables joint inference on progenitor and Galactic parameters, capturing complex dependencies that are difficult to model with classical likelihood-based methods.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Stellar streams offer one of the most sensitive probes of the Milky Way`s gravitational potential, as their phase-space morphology encodes both the tidal field of the host galaxy and the internal structure of their progenitors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The impact of the sulfur allotropes and sulfur hydrides on the Venus cloud chemistry</div>
+<div class="meta-line">Authors: Maxence Lefèvre, Franck Lefèvre, Anni Määttänen, Robert Skog, Benjamin Frandsen, Aurélien Stolzenbach, Ashwin Braude</div>
+<div class="meta-line">Venue: JGR: Planets, 131, e2025JE009523 (2026)</div>
+<div class="meta-line">First: 2026-10-27T10:32:46+00:00 · Latest: 2026-10-27T10:32:46+00:00</div>
+<div class="meta-line">Comments: 25 pages, 12 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36979v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36979v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Venus is home to vivid sulfur chemistry, with SO$_2$ as the major sulfur gas species and a global cloud layer between 47 and~70 km composed of H$_2$SO$_4$ and H$_2$O. The chemistry in the clouds has been extensively studied with 1D models, but none is able to reproduce the three orders of magnitude decrease of SO$_2$ inside the clouds. Sulfur allotrope chemistry could be a candidate for buffering sulfur atoms, as it can grow into long chains. Sulfur hydrides such as H$_2$S is considered as one of the main sulfur-bearing compounds, possibly linked to surface reactions or have a volcanic origin like on Earth. In this study, we use for the first time a 3D model to study the climatology of the sulfur allotrope in gas and condensed phase and hydride chemistry in the clouds with an explicit photolysis calculation and updated UV cross-section. H$_2$S is close to ppmv levels below the cloud base, the third most abundant sulfur-bearing species in this region after SO$_2$ and OCS. Below the clouds, S$_8$ gas phase is the most abundant sulfur allotrope. Above, the photolysis and condensation are preponderant, and the gas phase decreases to extremely low values. Polysulfur can therefore not be the unknown absorber at cloud-top altitudes. The condensed phase polysulfurs are present from 30 to above 100~km. S$_2$ condensed phase is the most abundant due to its low saturation mixing ratios. Polysulfur species represent a substantial sulfur reservoir in the upper cloud, equivalent to a few ppmv.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Venus is home to vivid sulfur chemistry, with SO$_2$ as the major sulfur gas species and a global cloud layer between 47 and~70 km composed of H$_2$SO$_4$ and H$_2$O.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">One-sample survival tests in the presence of non-proportional hazards in oncology clinical trials</div>
+<div class="meta-line">Authors: Chloé Szurewsky, Guosheng Yin, Gwénaël Le Teuff</div>
+<div class="meta-line">First: 2025-06-23T13:12:39+00:00 · Latest: 2026-10-27T10:04:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2506.18608v4">Abs</a> · <a href="https://arxiv.org/pdf/2506.18608v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In oncology, conducting well-powered time-to-event randomised clinical trials can be challenging due to the limited number of patients. Several single-arm trial (SAT) designs have recently been proposed to overcome this issue. They rely on the (modified) one-sample log-rank test (OSLRT) under the proportional hazards assumption to compare the survival of an experimental group with that of an external control. We extend Finkelstein&#x27;s formulation of the OSLRT as a score test by incorporating a piecewise exponential model to capture early, middle, and delayed treatment effects and an accelerated hazards model to accommodate crossing hazards. We further adapt the restricted mean survival time based test and propose a combination test procedure (max-Combo) for SATs. The performance of the developed tests is evaluated through a simulation study. The score tests control the type I error similarly to the OSLRT and achieve the highest power when the data-generating mechanism matches the assumed model. The max-Combo test is more powerful than the OSLRT across all considered scenarios and provides a robust alternative. Uncertainty in the estimation of the survival curve for the external control group, as well as model misspecification, may have a significant impact on performance. The proposed tests are further illustrated using three real data examples.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In oncology, conducting well-powered time-to-event randomised clinical trials can be challenging due to the limited number of patients.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Impact of Cumulus Parameterization and Cloud Microphysics on WRF Simulation of an Extreme Rainfall Event over Maharashtra, India: A 3 by 3 Factorial Assessment</div>
+<div class="meta-line">Authors: Devesh, Satyam Kumar, Akshay Sunil</div>
+<div class="meta-line">First: 2026-10-27T10:02:48+00:00 · Latest: 2026-10-27T10:02:48+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36944v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36944v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Simulating extreme monsoon rainfall over the Konkan coast and Western Ghats remains challenging at 9 km resolution, where convection is partly resolved and partly parameterised. This study evaluates the sensitivity of Weather Research and Forecasting (WRF) simulations of the 5-7 July 2026 Maharashtra rainfall event to cumulus and cloud microphysics schemes. Nine simulations employed a 3 x 3 factorial design combining WSM6, WDM6 and Thompson microphysics with Kain-Fritsch, Tiedtke and Grell-Freitas cumulus schemes. Rainfall was evaluated against IMD 0.25-degree gridded observations, with IMERG and ERA5 as additional references. A descriptive factorial decomposition showed that cumulus parameterisation accounted for 97.3% of across-experiment variation in mean rainfall, 88.2% in RMSE and 84.7% in spatial correlation, while microphysics contributed 2.0%, 2.1% and 9.3%, respectively. Kain-Fritsch produced the highest spatial correlations (0.533-0.581) but substantially overestimated rainfall. Tiedtke achieved the smallest mean biases and RMSE, although compensating regional errors concealed a 28-34% rainfall deficit over the Konkan-Ghats belt and substantial underestimation on 7 July. Grell-Freitas showed large wet biases and relatively high RMSE. All nine simulations displaced the event-total rainfall maximum approximately 140-195 km northward. WSM6-Tiedtke achieved the lowest RMSE, whereas Thompson-Kain-Fritsch better represented the rainfall spatial pattern. The findings demonstrate that, for this event and fixed model configuration, cumulus parameterisation exerted substantially greater influence on simulated rainfall than cloud microphysics. However, a single-event, single-member experimental design does not establish a universally optimal physics configuration.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Simulating extreme monsoon rainfall over the Konkan coast and Western Ghats remains challenging at 9 km resolution, where convection is partly resolved and partly parameterised.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Dynamic Properties of Numerical Solution for Stochastic Epidemic Models with a Fully Implicit Form</div>
+<div class="meta-line">Authors: Zeyao Jin, Zhiming Li, Shenglong Chen</div>
+<div class="meta-line">First: 2026-10-27T09:50:53+00:00 · Latest: 2026-10-27T09:50:53+00:00</div>
+<div class="meta-line">Comments: 19 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36924v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36924v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper establishes a fully implicit model to investigate the spread of epidemics and studies its dynamic properties, extending the semi-implicit model in Yang et al.(Commun. Nonlinear Sci. Numer. Simul., 152 (2026) 109140 ). We first employ the split-step backward Euler method to address the non-adaptability arising from backward Euler discretization and ensure the global convergence of the numerical solution. By linearizing the model, the computational cost is reduced at the expense of a slight increase in error, effectively avoiding complex iterative solution processes. Then, we derive the existence, uniqueness, positivity, and boundedness of the numerical solution, and obtain its global convergence order. On this basis, the extinction and persistence of the disease are investigated under three different scenarios. The results indicate that environmental noise is a key factor leading to disease extinction. Finally, numerical simulations visually verify the obtained theoretical conclusions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper establishes a fully implicit model to investigate the spread of epidemics and studies its dynamic properties, extending the semi-implicit model in Yang et al.(Commun.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Noise Steering: Exploiting Wake Steering and Acoustic Directivity for Noise-Constrained Wind Farm Control via Reinforcement Learning</div>
+<div class="meta-line">Authors: Martín de Frutos, Baptiste Corban, Claire Bizon Monroc, Ana Bušić, Donatien Dubuc, Jiamin Zhud, Esteban Ferrer</div>
+<div class="meta-line">First: 2026-10-27T09:23:45+00:00 · Latest: 2026-10-27T09:23:45+00:00</div>
+<div class="meta-line">Comments: 17 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36888v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36888v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Existing noise mitigation strategies for wind farms usually consist in reducing turbines power output, without accounting for the wake interactions between them and the noise emission directivity. This leads to over-conservative policies and unexploited wind power. Yet, turbine yaw can simultaneously affect wake interactions and the direction of noise emission, offering an additional degree of freedom for farm-level noise control. We therefore propose Noise Steering, a model-free reinforcement learning (RL) strategy that jointly controls turbine yaw angles and power setpoints to maximise farm power while satisfying a local noise constraint in a defined region. To enable training at a reduced computational cost, a low-fidelity acoustic model is coupled with the steady-state FLORIS simulator. The RL agent effectively learns how to redirect wakes and noise directivity away from the protected region while redistributing power across the farm. On a six-turbine test farm, the policy satisfies the 40 dB noise constraint throughout the full range of turbulent winds, with an average power deficit of only 2% relative to greedy unimpeded control, and up to 7.7% at high wind speeds. In comparison, the industry-standard noise-reduced operation (NRO) baseline here generates an average power loss of 17%. When deployed in the higher-fidelity FAST.Farm simulator, the policy largely retains its performance under steady and turbulent inflow, despite differences in simulation fidelity. These results demonstrate the potential of combining yaw control and power derating through RL to improve the power-noise trade-off in wind farm operation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Existing noise mitigation strategies for wind farms usually consist in reducing turbines power output, without accounting for the wake interactions between them and the noise emission directivity.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Advancing global crop simulations with differentiable modelling</div>
+<div class="meta-line">Authors: Yunan Lin, Sebastian Bathiany, Maximilian Gelbrecht, Jens Heinke, Christoph Müller, Niklas Boers</div>
+<div class="meta-line">First: 2026-10-27T08:25:50+00:00 · Latest: 2026-10-27T08:25:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36827v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36827v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Global gridded crop models (GGCMs) are crucial for assessing the performance of food producing systems, for example under climate change or their contribution to environmental challenges. However, systematic calibration of their parameters remains a long-standing challenge. Persisting uncertainties in these parameters propagate into future crop projections, thereby affecting and potentially biasing food security assessments. Here we present a fully process-based differentiable GGCM implementation that offers a fundamentally new approach to parameter calibration, uncertainty quantification, yield loss attribution, and management optimization. Using automatic differentiation, we optimize selected model parameters against site-scale carbon and water flux observations, reducing normalized root-mean-square errors at held-out sites by 24.8-36.2% compared to the default state-of-the-art model. Without calibration against yield data, the optimized model better captures detrended yield anomalies across 61.2-64.3% of global crop area and reduces low-yield errors by 3.4-43.5% for wheat, rice, maize and soybean. It also ranks among the best performers in comparison with GGCMI Phase 3 models. Future simulations show that calibration reduces the projected end-of-century rice production increase from 55.1% to 22.1% under SSP5-8.5. Parameter ensembles further reveal that parameterizations with comparable historical skill can produce markedly different future production responses. Beyond calibration, differentiability enables the attribution of crop losses under extreme events and supports the design of adaptive crop management strategies. For the 2018 European drought, we identify spring heat and water limitation as major contributors to wheat yield losses and develop more effective irrigation strategies for mitigating simulated regional yield losses.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Global gridded crop models (GGCMs) are crucial for assessing the performance of food producing systems, for example under climate change or their contribution to environmental challenges.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">4D sensitivity kernels for infrasound atmospheric propagation: considering the need and impact of time dependent observation operators for acoustic wave observations in data assimilation methods</div>
+<div class="meta-line">Authors: Raphael F. Garcia, Marc Bocquet, Solène Gerier, Roland Martin</div>
+<div class="meta-line">First: 2026-10-27T08:12:16+00:00 · Latest: 2026-10-27T08:12:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36810v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36810v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The long range propagation of acoustic waves in Earth&#x27;s atmosphere is sensitive to winds and temperature variations in the upper atmosphere. Thus, infrasound observations have a strong potential to improve numerical weather models by data assimilation methods. However, because acoustic waves propagate slowly, the atmospheric parameters can change during the propagation of the acoustic waves. This change of atmosphere properties is usually not taken into account by infrasound simulation tools which generally assume stationary atmosphere models. In order to close this modeling gap, we present here a method to compute the linear sensitivities of infrasound observables to atmospheric parameters varying both in space and time. We show that adjoint based methods can easily handle this computation of 4D sensitivity kernels, also called time variable observation operators in the data assimilation community. Then, we discuss the capabilities of various data assimilation methods to handle such observation operators. We demonstrate that only variational methods with data assimilation windows longer than the propagation duration of the long range infrasound can accommodate these observations, as well as their ensemble counterparts. Finally, we demonstrate the benefit of assimilating such long range infrasound observations, and we quantify the relative impact of linear approximation of observation operators and stationary approximation of the atmosphere model by assimilating propagation time observations of circumnavigating Lamb waves in Lorenz&#x27;96 low-order model. The results of this data assimilation experiment demonstrate that the time variability of atmospheric parameters should be taken into account even for infrasound propagation times limited to 2 or 3 time steps of the atmosphere model.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The long range propagation of acoustic waves in Earth&#x27;s atmosphere is sensitive to winds and temperature variations in the upper atmosphere.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On dependence of the source deactivation factor on the magnitude of main earthquake shock</div>
+<div class="meta-line">Authors: A. V. Guglielmi, A. D. Zavyalov, O. D. Zotov</div>
+<div class="meta-line">First: 2026-10-27T07:43:40+00:00 · Latest: 2026-10-27T07:43:40+00:00</div>
+<div class="meta-line">Comments: 16 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36775v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36775v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We have discovered an inverse relationship between the earthquake source deactivation coefficient and the magnitude of the main shock. Recently, this pattern was confirmed through an analysis of earthquakes in the Central Himalayas (Poudel et al., 2026). On the one hand, independent confirmation of a previously unknown pattern strengthens our confidence in the relevance of the phenomenological theory of aftershocks, upon which we have based our method for processing and analyzing aftershocks. On the other hand, Poudel et al. (2026) presented our method in a distorted manner. Poudel et al. mistakenly believe that our method is based on a modified Omori law. Both circumstances provide an occasion and a basis for a simple and clear explanation of the essence of our approach to the study of aftershocks. First and foremost, our approach to the problem is diametrically opposed to Omori approach. Omori law and its modification, proposed by Hirano and Utsu, describe the decay of aftershocks. In contrast, we formulated and solved the inverse problem. The essence of the inverse problem lies in the need to calculate the source deactivation coefficient based on aftershock observation data, without making any prior assumptions regarding the law governing the decay of aftershocks. A crucial concept in our theory is the rather complex notion of the proper time of a source. Proper time differs radically from astronomical time. The paper describes the continuous and discrete representations of proper time. This paper is methodological in nature and may prove useful to researchers studying the dynamics of an earthquake source following the formation of a main rupture within the rock mass. Keywords: earthquake source, main shock, relaxation, deactivation coefficient, proper time, inverse problem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We have discovered an inverse relationship between the earthquake source deactivation coefficient and the magnitude of the main shock.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Seismic background mitigation with the Lunar Gravitational-wave Antenna</div>
+<div class="meta-line">Authors: Han Yan, Jan Harms</div>
+<div class="meta-line">First: 2026-04-27T18:00:15+00:00 · Latest: 2026-10-27T07:32:31+00:00</div>
+<div class="meta-line">Comments: 12 pages, 13 figures. Accepted for publication in Physical Review D</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.24866v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.24866v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Lunar gravitational-wave (GW) detectors relying on the measurement of the response of the Moon to GWs are susceptible to a seismic background, which might pose a fundamental sensitivity limitation. The Lunar Gravitational-wave Antenna (LGWA) was conceived as an array of accelerometers with the idea that data can be processed to distinguish between a GW signal and the seismic background. As a result, the seismic noise of the GW measurement would be mitigated. However, so far, no quantitative assessment of the mitigation of the seismic background has been provided. In this article, we derive the analytical expressions for the optimal squared signal-to-noise ratio for a two-station array in an isotropic, random, Gaussian seismic field. Our numerical analysis reveals that the capacity to mitigate the seismic noise critically depends on the distance between the two stations relative to the seismic-correlation length. We demonstrate that optimal placement of the two stations can yield significant improvements in the equivalent seismic noise amplitude spectral density (ASD), approximately a factor of 2.3 at 0.3 Hz, compared to the measurement with a single station in the seismic-noise-dominated limit. The equivalent ASD of the seismic noise also exhibits distinct oscillatory and mitigation features arising from the Bessel-function structure of the noise correlation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Lunar gravitational-wave (GW) detectors relying on the measurement of the response of the Moon to GWs are susceptible to a seismic background, which might pose a fundamental sensitivity limitation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Dissolution-induced mode transition of crack propagation in carbonate rocks: From brittle fracture to diffuse damage</div>
+<div class="meta-line">Authors: Fanyu Wu, Chong Liu, Mingze Hu, Manolis Veveakis, Manman Hu</div>
+<div class="meta-line">First: 2026-04-11T12:37:27+00:00 · Latest: 2026-10-27T06:51:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.10184v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.10184v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In chemically reactive environments, the mechanical integrity of geomaterials is fundamentally compromised by solid matrix dissolution. In this study, we propose a fully coupled chemo-mechanical phase-field framework to capture the dynamic interplay between mineral dissolution and fracture propagation. A key feature of the proposed model is the dynamic coupling of local mass removal to the fracture length scale, while also incorporating the damage-accelerated reaction-diffusion processes. Our results capture the development of an enlarged fracture process zone driven by chemical mass removal. This chemically induced widening blunts the sharp crack tip, alleviating the near-tip stress concentrations and causing a pronounced degradation in material stiffness before failure. Furthermore, we reveal a distinct ductilization effect, characterized by a more gradual accumulation of damage and a delayed onset of macroscopic failure. We show that the transition between brittle and ductile failure modes is dictated by the competing timescales of chemical degradation and mechanical deformation. Highly acidic environments enhance matrix dissolution and promote ductile fracture, whereas rapid mechanical loading limits chemical interaction and preserves brittle failure mode.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In chemically reactive environments, the mechanical integrity of geomaterials is fundamentally compromised by solid matrix dissolution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The uneven rise of AI-generated web content</div>
+<div class="meta-line">Authors: Adam Visokay, Soumyakanti Pan, Molly Griston, Polina Iasakova, Mark Nepf, Denis Peskoff, Riya Sinha, Jikai Sun, Isabelle Thiara, Letao Wang, Yiwei Wu, Lauren Yan, Tyler H. McCormick</div>
+<div class="meta-line">First: 2026-10-27T04:33:49+00:00 · Latest: 2026-10-27T04:33:49+00:00</div>
+<div class="meta-line">Comments: 12 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36631v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36631v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In less than five years, generative artificial intelligence (AI) has dramatically reshaped the public-facing web. Using a sample of more than 5 million crawlable webpages, we demonstrate that the share containing AI-generated text has increased precipitously, but unevenly. Our analyses reveal substantial differences in AI composition across language and domain categories (e.g., .edu, .com, or .gov). A higher fraction of English-language webpages contain AI-generated text compared to pages in other languages, and prevalence is substantially lower on .gov and .edu domains compared to .com. These distinctions persist even after accounting for compositional effects. We also find heterogeneity based on a page&#x27;s position in the connectivity structure of the web. AI-generated text is most common and has increased most rapidly in pages that are the least central in the graph, which drives much of the overall growth in AI-generated text. A slower increase has taken place for more central pages, with the most central tier emerging as the least likely to contain AI-generated text. Methodologically, we use multiple AI detection tools, and generate estimates using a Bayesian hierarchical model that incorporates corrections for the detectors&#x27; statistical properties (both false positives and false negatives) and allows for different detector performance across groups, while propagating uncertainty in detector error rates into prevalence estimates. Our work suggests that AI is a prominent, but varied, contributor to public information and internet-based communication.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In less than five years, generative artificial intelligence (AI) has dramatically reshaped the public-facing web.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Modeling Dependence Structures in Astronomical Multi-Band Time Series Data via Multi-Output Gaussian Processes</div>
+<div class="meta-line">Authors: Samata Das, Lishan Shi, Yasaman Hamayouni, Hyungsuk Tak, Jong-Hak Woo</div>
+<div class="meta-line">First: 2026-07-23T15:33:59+00:00 · Latest: 2026-10-27T04:31:19+00:00</div>
+<div class="meta-line">Comments: 20 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.21431v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.21431v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern astronomical time-domain surveys routinely collect multi-band light curves that provide complementary information about the physical processes governing source variability. Although various multi-output Gaussian process (GP) models have been applied in different astronomical contexts, the statistical and astrophysical implications of their dependence structures have received comparatively limited attention. In this work, we examine three existing approaches to modeling cross-band dependence within a common multi-output GP framework and investigate how their underlying assumptions affect statistical inference and astrophysical interpretation. These include covariance-based, stochastic differential equation (SDE)-based, and latent-process approaches, which differ mainly in how cross-band dependence is introduced. The covariance-based approach directly specifies cross-band covariance functions to characterize dependence, whereas the SDE-based approach specifies joint temporal dynamics, with cross-band dependence arising from coupled dynamics or correlated driving processes. The latent-process approach represents dependence through shared stochastic processes and their transformations, which can reflect physical relationships among multiple light curves. We demonstrate the practical implications of these modeling choices through applications to multi-band active galactic nucleus light curves and emission-line reverberation mapping. Rather than advocating a universally preferred approach, this work provides guidance for selecting dependence structures according to scientific objectives and clarifies how these choices influence the statistical characterization and scientific interpretation of multi-band stochastic variability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern astronomical time-domain surveys routinely collect multi-band light curves that provide complementary information about the physical processes governing source variability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Balanced State Subspaces for Mamba-2 State Compression</div>
+<div class="meta-line">Authors: Shang Tingyu, Cao Wenfei</div>
+<div class="meta-line">First: 2026-10-27T04:21:27+00:00 · Latest: 2026-10-27T04:21:27+00:00</div>
+<div class="meta-line">Comments: 15 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.36617v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.36617v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mamba-2 compresses all context into a fixed-size recurrent state that dominates decoding memory and bandwidth. Existing compressors quantize state values or prune state coordinates, scoring each channel independently in the native basis. We examine trained Mamba-2 states and find that energy is almost rank-one, but the output does not read the energetic directions: energy concentrates in a bias-like direction accumulated by the recurrence, while the content the output reads lives in a low-dimensional subspace that is not aligned with the state&#x27;s coordinates. Even output-aware scores are computed coordinate by coordinate, so they miss the directions that determine the input--output map. Compression should therefore target the write--read subspace rather than individual coordinates. We propose \method{}, a post-training transform that instantiates balanced truncation with full controllability and observability Gramians and applies the rotation exactly via Mamba-2&#x27;s scalar-identity transition. Because the useful rank varies widely across layers, we further introduce HARP, which allocates ranks per layer from the Hankel spectrum and protects retrieval-sensitive layers, improving both perplexity and retrieval over uniform budgets. Calibration takes a single forward pass, an order of magnitude faster than GHOST&#x27;s released protocol, with lower peak memory. With HARP, \method{} halves the state dimension at an average WikiText-2 perplexity increase of $0.3$ points ($1.8\%$) across 130M--2.7B, versus $1.6$ ($9.3\%$) for GHOST, and the gap widens at 25\% retention.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mamba-2 compresses all context into a fixed-size recurrent state that dominates decoding memory and bandwidth.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0656.html">20261027_0656</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0547.html">20261024_0547</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0512.html">20261019_0512</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0551.html">20261017_0551</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0659.html">20261010_0659</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0726.html">20261008_0726</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0555.html">20261004_0555</a>
+<a href="archive/20261003_0646.html">20261003_0646</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0545.html">20260928_0545</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0555.html">20260926_0555</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0623.html">20260922_0623</a>
+<a href="archive/20260921_0508.html">20260921_0508</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0550.html">20260918_0550</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0524.html">20260910_0524</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0524.html">20260830_0524</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0320.html">20260820_0320</a>
+<a href="archive/20260819_0322.html">20260819_0322</a>
+<a href="archive/20260818_0321.html">20260818_0321</a>
+<a href="archive/20260817_0315.html">20260817_0315</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0352.html">20260814_0352</a>
+<a href="archive/20260813_0356.html">20260813_0356</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0421.html">20260806_0421</a>
+<a href="archive/20260805_0419.html">20260805_0419</a>
+<a href="archive/20260804_0421.html">20260804_0421</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0412.html">20260731_0412</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0415.html">20260728_0415</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0412.html">20260725_0412</a>
+<a href="archive/20260724_0408.html">20260724_0408</a>
+<a href="archive/20260723_0408.html">20260723_0408</a>
+<a href="archive/20260722_0415.html">20260722_0415</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0400.html">20260718_0400</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0406.html">20260715_0406</a>
+<a href="archive/20260714_0407.html">20260714_0407</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0443.html">20260710_0443</a>
+<a href="archive/20260709_0417.html">20260709_0417</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0448.html">20260707_0448</a>
+<a href="archive/20260706_0407.html">20260706_0407</a>
+<a href="archive/20260705_0406.html">20260705_0406</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0415.html">20260703_0415</a>
+<a href="archive/20260702_0446.html">20260702_0446</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_1045.html">20260630_1045</a>
+<a href="archive/20260630_1021.html">20260630_1021</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
